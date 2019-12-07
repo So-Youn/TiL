@@ -1,0 +1,169 @@
+## 1. Scanner 클래스
+
+
+
+``` java
+import java.util.*;
+Scanner scanner = new scanner(system.in); // scanner클래스의 객체 생성
+String input = scanner.nextLine();
+int num = Integer.parseInt(input);
+```
+
+* scanner(변수명).close; 
+  * 생성한 Scanner 객체는 불필요한 리소스 낭비를 막기 위해 입력을 받은 후에는 종료
+
+## 2. 연산자
+
+#### 증감연산자
+
+> 연산자 : 연산을 수행하는 기호( +,-,*,/ 등)
+>
+> 
+
+* 전위형 : 값이 참조되기 전에 증가시킨다.  `j =++i;`
+
+* 후위형 : 값이 참조된 후에 증가시킨다. `j = i++;`
+
+* 복합 대입 연산자
+
+  (결합된 두 연산자는 반드시 공백 없이 써야 한다.)
+
+  |     op=      |        =        |
+  | :----------: | :-------------: |
+  |   i += 3;    |    i = i+3;     |
+  |   i -= 3;    |   i = i - 3;    |
+  |   i *= 3;    |   i = i * 3;    |
+  |   i /= 3;    |   i = i / 3;    |
+  |   i %= 3;    |   i = i % 3;    |
+  |   i <<= 3;   |   i = i << 3;   |
+  |   i >>= 3;   |   i = i >> 3;   |
+  |   i &= 3;    |   i = i & 3;    |
+  | i *= 10 + j; | i = i * (10+j); |
+
+  
+
+## 2. 조건문 (if, switch)
+
+### 1.1 if 문
+
+##### if --else 문
+
+```java
+public static void main(String[] args) {
+		int input;
+		System.out.println("숫자를 하나 입력하세요!");
+
+		Scanner scanner = new Scanner(System.in);
+		String tmp = scanner.nextLine(); // 화면을 통해 입력받은 내용을 tmp에 저장
+		input = Integer.parseInt(tmp); // 입력받은 문자열(tmp)을 숫자로 변환
+
+		if (input == 0) {
+			System.out.println("입력하신 숫자는 0입니다.");
+		} else {
+			System.out.print("입력하신 숫자는 0이 아닙니다.");
+			System.out.println("입력하신 숫자는" + input + "입니다.");
+		}
+
+	}
+```
+
+##### if--else if문
+
+* 처리해야 하는 경우의 수가 셋 이상인 경우.
+
+    ```java
+     if(조건문){
+        						//조건이 만족할 때 실행할 명령문
+        }else if{ 			//조건이 만족하지 않을 때
+        }else { 				//else 블럭은 생략 가능하다.
+    	} 
+    ```
+
+
+
+### 1.2 Switch 문
+
+###  1.3 반복문
+
+#### 1.3.1 for 문
+
+#### 1.3.2 While 문
+
+#### 1.3.3 Do -While 문
+
+### 1.4 break문
+
+#### continue 문
+
+## 3. 배열
+
+### 3.1 배열(Array)이란?
+
+**같은 타입**의 여러 변수를 하나의 묶음으로 다루는 것.
+
+* 변수의 선언과 달리, 다뤄야 할 데이터의 수가 아무리 많아도 단지 배열의 길이만 바꾸면 된다.
+
+``` java
+int[] score = new int[5]; 		//5개의 int값을 저장할 수 있는 배열 생성
+```
+
+*변수 score는 배열을 다루는 데 필요한 참조변수일 뿐, 값을 저장하기 위한 공간은 아니다.*
+
+*참조변수의 기본 값은 null*
+
+| score[0] | score[1] | score[2] | score[3] | score[4] |
+| :------: | :------: | :------: | :------: | :------: |
+|    0     |    0     |    0     |    0     |    0     |
+
+* 배열 선언
+  * 타입[] 변수이름;							*참조변수를 위한 공간 만들기*
+
+* 배열 생성
+  * 값을 저장할 수 있는 공간 만들기
+  * 변수이름 = new 타입[길이];
+* 배열 초기화
+  * 값을 저장하고 읽어오기
+
+```java
+int[] score = new int[5];
+score[3] = 100; 				// score의 4번째 요소에 100 저장
+int value = score[3]; 			//배열 score의 4번째 요소에 저장된 값을 읽어서 value에 저장
+```
+
+```java
+int[] score = new int[]{50,60,70,80,90};
+				//괄호{} 안의 값의 갯수에 의해 배열의 길이가 자동으로 결정.[]안에 비워두기.
+int[] score = {50,60,70,80,90};			//new int[] 생략 가능.
+```
+
+
+
+*  **배열이름. length**
+  * 배열의 길이는 한번 생성되면 변경할 수 없다.
+  * for문의 조건식에서 배열의 길이를 직접 적어주는 것보다 유용
+    * 자동적으로 변경된 배열의 길이를 값으로 갖기 때문.
+
+```java
+int[] score = new int[5];
+
+for (int i = 0;i < score.length; i++){
+    system.out.println(score[i]);
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
