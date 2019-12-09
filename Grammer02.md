@@ -83,6 +83,19 @@ public static void main(String[] args) {
 
 ### 1.2 Switch 문
 
+```java
+String code = new String("a01");
+		switch(code) {
+		case "a01" :
+			System.out.println("A01");
+			break;
+		case "a02" :
+			System.out.println("A02");
+		}
+```
+
+
+
 ###  1.3 반복문
 
 #### 1.3.1 for 문
@@ -90,6 +103,24 @@ public static void main(String[] args) {
 #### 1.3.2 While 문
 
 #### 1.3.3 Do -While 문
+
+```java
+Scanner key = new Scanner(System.in);
+		int num = 0;
+while(num>10) { 	//while문은 시도도 못하고 종료.
+			System.out.println("숫자입력");
+			num = key.nextInt();
+			//while문은 조건을 만족하지 않으면 블럭 안의 코드가 실행되지 않는다.
+			System.out.println("while문 - 실행명령문 :"+num);
+		}
+do {
+			System.out.println("숫자입력");
+			num = key.nextInt();
+			System.out.println("Do - while문 - 실행명령문 :"+num);
+		}while(num>10);
+```
+
+
 
 ### 1.4 break문
 
@@ -99,17 +130,20 @@ public static void main(String[] args) {
 
 ### 3.1 배열(Array)이란?
 
-**같은 타입**의 여러 변수를 하나의 묶음으로 다루는 것.
+**같은 타입**의 여러 변수를 `하나의 묶음`으로 다루는 것.
 
 * 변수의 선언과 달리, 다뤄야 할 데이터의 수가 아무리 많아도 단지 배열의 길이만 바꾸면 된다.
 
 ``` java
 int[] score = new int[5]; 		//5개의 int값을 저장할 수 있는 배열 생성
+String[] strArr = new String[3]; //선언 ,생성 동시에.
 ```
 
 *변수 score는 배열을 다루는 데 필요한 참조변수일 뿐, 값을 저장하기 위한 공간은 아니다.*
 
 *참조변수의 기본 값은 null*
+
+* 배열의 장점은 index로 상수 대신 변수나 수식도 사용할 수 있다는 것.
 
 | score[0] | score[1] | score[2] | score[3] | score[4] |
 | :------: | :------: | :------: | :------: | :------: |
@@ -120,7 +154,9 @@ int[] score = new int[5]; 		//5개의 int값을 저장할 수 있는 배열 생�
 
 * 배열 생성
   * 값을 저장할 수 있는 공간 만들기
-  * 변수이름 = new 타입[길이];
+  * 변수이름 = **new** 타입[길이];
+    * 배열을 heap에서 관리하기 때문에  new 사용 -> **참조형**
+    * 모든 datatype으로 배열 만들 수 있음(int,double,String,)
 * 배열 초기화
   * 값을 저장하고 읽어오기
 
@@ -142,6 +178,7 @@ int[] score = {50,60,70,80,90};			//new int[] 생략 가능.
   * 배열의 길이는 한번 생성되면 변경할 수 없다.
   * for문의 조건식에서 배열의 길이를 직접 적어주는 것보다 유용
     * 자동적으로 변경된 배열의 길이를 값으로 갖기 때문.
+  * index 범위 : 0부터 배열길이-1까지
 
 ```java
 int[] score = new int[5];

@@ -14,11 +14,41 @@
 * 참조형 (reference type) ; 어떤 값이 저장되어 있는 주소를 값으로 갖는다.
   * `API`에 포함된 클래스
   
+    * heap에 할당된 값을 참조하여, 속도가 느리다.
+  
+  * String
+  
   * 내가 만든 클래스
   
   * 배열
   
+    ​	
+  
+    ```java
+    String str1 = new String("java");
+    String str2 = new String("java");
+    if(str1==str2){
+        system.out.println("참조형 같다.");
+    }else{
+        system.out.println("참조형 다르다.");
+    }
+    ```
+  
     
+  
+    
+  
+    ```java
+    if(str1.equals(str2)){ 			//문자열 비교 - String클래스 매소드로 처리
+       //boolean result = str1,equals(Str2);
+        system.out.println("문자열 같다.");
+    }else {
+        system.out.println("문자열 다르다.")
+    }
+    ```
+  
+    
+  
 
 #### 형변환(Casting)
 
@@ -172,6 +202,10 @@ public static void main(String[] args) {
 }
     
 ```
+
+java는 기본형 데이터, 오류까지 전부 객체로 관리 가능.
+
+​		-String과 기본형 데이터가 서로 변환 가능.
 
 
 

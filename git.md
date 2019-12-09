@@ -42,7 +42,7 @@ Initialized empty Git repository in C:/Users/student/Desktop/Til/.git/
 이력(history)를 확정하기 위해서는 `add` 명령어를 통하여 staging area 에 stage 시킨다.
 
 ```bash
-$ git status
+a$ git status
 $ git add .						# 현재 디렉토리를 stage -> commit	
 $ git add README.md				# 특정 파일을 stage
 $ git add images/				# 특정 폴더를 stage
