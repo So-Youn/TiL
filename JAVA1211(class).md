@@ -231,7 +231,35 @@ public class AccountTest {
 
 ### 1) static- 클래스의, 공통적인
 
-#### 1.1) Static 메소드
+메모리 static 공간에 올라가 대기상태로 존재.
+
+### 1.1) static 변수
+
+> 인스턴스마다 다른 값이 아닌 같은 값을 공유하는 변수
+>
+> => **하나의 변수**를 모든 인스턴스가 **공유**
+
+클래스 내 멤버변수로 `static`을 선언한다면, 생성한 클래스가 해당 변수를 고유의 값으로 가진다고 생각하면 된다.
+
+```java
+public class StaticDemo {
+	String name;
+	int num;
+	static int staticNum;
+	
+	public StaticDemo() {
+		
+	}
+	public StaticDemo(String name) {
+		this.name = name;
+		num++;
+		staticNum++;
+	}
+    //위 클래스로 여러 객체를 생성해도 staticNum의 값은 0에서 증가하는 것이 
+    //아니라 "마지막으로 사용했던 값"에서 1이 증가한다.
+```
+
+#### 1.2) Static 메소드
 
 static멤버는 인스턴스의 소유가 아니므로 무조건 클래스명으로 접근한다. 
 
@@ -266,7 +294,7 @@ public class StaticDemoTest {
 
 
 
-#### 1.2) non-static메소드(일반메소드-인스턴스메소드)
+#### 1.3) non-static메소드(일반메소드-인스턴스메소드)
 
 * 객체 생성을 한 후에 참조변수를 통해서 액세스.
 

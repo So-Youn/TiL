@@ -66,6 +66,10 @@ String[] name = new String[3]; 	//3개의 문자열을 담을 수 있는 배열�
 
 ## 3. 커맨드 라인을 통해 입력받기
 
+- 메인 메서드의 매개변수(args)
+
+> 커맨드 라인에서 `java class`명령을 사용해 실행할 때 뒤에 `client1` `client2`와 같은 매개 변수를 주면, 각각 다른 명령을 실행할 수 있게 해주는 역할을 함.
+
 ## 3.1. 명령 prompt
 
 ![명령 prompt](C:\Users\sec\Desktop\명령 prompt.PNG)		
