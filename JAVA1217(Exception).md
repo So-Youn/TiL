@@ -1,6 +1,8 @@
 ## 0.  Exception Handling
 
-> 실행 시 발생할 수 있는 예외 또한 클래스로 관리하고 있다.
+> 프로그램 실행 중 어떤 원인에 의해서 오작동을 하거나 비정상적으로 종료되는 경우를 막기 위해 클래스로 관리하고 있다. 
+>
+> 정상적인 실행상태를 유지하기 위함.
 
 - 컴파일 에러
 
@@ -18,11 +20,35 @@
 
 : 프로그램 코드에 의해서 수습될 수 없는 심각한 오류
 
+> **메모리부족(OutOfMemoryErro)** 나 **스택오버플로우(StackOverflowError)**
+
 #### 2. 예외(Exception)
 
 : 프로그램 코드에 의해서 수습될 수 있는 다소 미약한 오류
 
 > `Exception`클래스와 `Error`클래스는 `Throwable`클래스를 상속받고 있다.
+
+* 에러가 발생하면, 프로그램의 비정상적인 종료를 막을 길이 없지만, 예외는 종료를 막을 수 있다.
+* `RuntimeException`클래스
+  * `ArrayIndexOutOfBoundsException` : 배열의 범위를 벗어날 때
+  * `NullPointerException` : 값이 null인 참조변수의 멤버를 호출하려 할 때
+  * `ClassCastException` : 클래스간의 형변환을 잘못했을 때
+  * `ArithmeticException` : 정수를 0으로 나누려고 했을 때
+* `Exception`클래스 (사용자들의 동작에 의해서 발생하는 경우 多)
+  * `FileNotFoundException` : 존재하지 않는 파일의 이름을 입력했다
+  * `ClassNotFoundException` : 실수로 클래스의 이름을 잘못 적었을 때
+  * `DataFormatException` : 입력한 데이터 형식이 잘못 된 경우
+
+#### 3. 예외 처리하기 - try-catch문
+
+#### 4. printStackTrace() / getMessage()
+
+예외에 대한 정보 접근하기 위한 메서드
+
+이 참조변수들은 선언된 `catch`블럭에서만 사용 가능하다.
+
+* **printStackTrace()** 예외발생 당시의 호출스택(call stack)에 있던 메서드의 정보와 예외 메시지를 화면에 출력
+*  **getMessage() ** 발생한 예외클래스의 인스턴스에 저장된 메시지를 얻을 수 있다.
 
 ##  1.  Throws
 
@@ -33,6 +59,15 @@
 > > 예로, 잔액을 출금하는 메서드에 잔액이 0원이라면 에러가 발생해야 하지만 **Java언어 상에서 0은 오류로 정의되어 있지 않다.**
 > >
 > > 이런 경우에 위의 **`throw`키워드를 사용**해 **고의로 에러를 발생**시킬 수 있다.
+
+```java
+//연산자 new를 이용해서 발생시키려는 예외 클래스의 객체를 만든다
+Exception e = new Exception("고의로 발생");
+//키워드 throw를 이용해서 예외 발생
+throw e;
+//위의 두 줄을 한 줄로
+throw new Exception("고의로 발생")
+```
 
 
 
@@ -99,6 +134,7 @@ public class ExceptionTest05 {
      이렇게 예외를 발생시키면 `try-catch`문과 다르게 **같은 예외라도 다르게 처리**할 수 있어 프로그래머가 **유연한 코드를 작성**할 수 있도록 해준다.
      
 3. ```java
+     //메서드에 예외 선언 시 throw + 발생할 수 있는 예외
      public int test(int num1, int num2) throws ArithmeticException {
          return ~;
      }
