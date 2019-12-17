@@ -1,0 +1,177 @@
+
+
+## 0. 향상된 for문 (for each문)
+
+반복적인 업무를 처리하기 때문에 배열 또는 ArrayList와 함께 사용.
+
+for(초기화식 ; 조건식 ; 업데이트식)
+
+**------------------------>for (변수타입 변수이름 : 배열이름)**
+
+> for each문에서는 배열의 항목 수만큼 실행부분을 반복하는데 반복이 이루어질 때마다 배열의 항목을 순서대로 꺼내어 변수(number)에 자동으로 대입해 준다.
+>
+> 따로 반복변수(int i)를 선언하거나 배열의 값을 가져오는 부분(array[i]) 없이 실행부분에서는 하고자 하는 작업에 집중할 수 있다.
+>
+> > (주의) 오직 배열의 값을 가져다 사용할 수 만 있고, 수정할 수 없다.
+
+```java
+public static void main(String[] args) {
+    int array[] - {10,20,30,40,50};
+    for (int number : array) {
+        System.out.println(number);
+    }
+}
+```
+
+```java
+		for (Shape obj : shape) { 
+			System.out.println(obj.getColors());// obj = shape[i]
+			// 객체의 타입을 변경하는 경우는 무조건 변경하는 것이 아니라,
+			// 객체의 타입을 체크한 후에 변경한다.
+```
+
+*즉,for문이 한번 실행될 때마다 shape 배열에서 요소 하나씩 꺼내서 obj에 전달 후 작업.*
+
+##  1. 인터페이스 (interface)
+
+* **추상메소드(상수도 포함)만** 정의하는 특별한 클래스
+
+* 공통된 특징으로 부모 클래스를 만들어 상속했는데 **공통으로 가질 필요가 없는 메서드가 생겼을 때 인터페이스를 통해 구현**할 수 있다.
+
+* 인터페이스를 사용하는 목적은 **다중상속을 허용**, **다형성을 적용**할 수 있도록,
+  기본적으로 구현해야하는 기능이 무엇인지 정의하기 위한 목적
+  * `public abstract`이 생략가능(상속받으면 자동으로 추가)
+  * 인터페이스는 여러 개를 상속할 수 있다.
+  * 인터페이스가 인터페이스를 상속할 수 있다.(`Extends` 이용)
+  * 클래스가 인터페이스를 상속할 수 있다. (`implements` 이용)	
+* 일반 메서드와 일반 멤버변수를 가질 수 없다.
+  * 모든 멤버변수는 **`public static final`**, 모든 메서드는 **`public abstract`**
+
+> 하위인터페이스가 상위인터페이스의 추상메소드를 상속받는다.
+>
+> 인터페이스를 상속받는 클래스가 이미 다른 클래스를 상속하는 경우에 
+>
+> > `extends`를 먼저 정의하고, `implements`를 정의해야한다.
+> >
+> > implements 뒤에 인터페이스를 정의할 때 `,`로 구분해서 나열한다.
+
+
+
+[윈도우 창 띄우기]
+
+```java
+import javax.swing.JFrame;
+
+class GUITest extends JFrame implements Runnable{
+	GUITest(String title){
+		super(title);
+		setSize(500,500);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}
+public class InterfaceTest {
+	public static void main(String[] args) {
+		GUITest obj = new GUITest("인터페이스 연습");
+	}
+
+}
+```
+
+
+
+## 2. instanceof
+
+> 객체의 타입을 검사하고 작업할 수 있다.
+>
+> 타입 체크 후에 사용하면 명확성을 높일 수 있다.
+
+```java
+class A{
+	
+}
+interface IA{
+	
+}
+public class InstanceOfTest {
+	public static void main(String[] args) {
+		SubA obj = new SubA();
+		if(obj instanceof SuperA) {
+			System.out.println("SuperA 타입이다.");
+		}else {
+			System.out.println("SuperA타입이 아니다.");
+		}
+		System.out.println("======================");
+        if(obj instanceof IA) {
+			System.out.println("IA 타입이다.");
+		}else {
+			System.out.println("IA 타입이 아니다.");
+		}
+    }
+}
+```
+
+[결과]
+
+SuperA 타입이다.
+
+IA 타입이 아니다.
+
+---
+
+
+
+## 3. 예외처리 (Exception handling)
+
+> exception은 **try~catch**를 사용해서 처리한다.
+>
+> 여러 개의 예외가 발생하는 경우 처리하는 작업으로, 사용자가 입력하는 값에 따라 예외가 다르게 발생한다.
+
+1. 사용자가 제대로 값을 입력 : 예외가 발생되지 않으므로, catch 블럭은 실행되지 않는다.
+
+2. 사용자가 나눌 숫자에 0을 입력하면
+
+   ​	=> ArithmeticException 발생
+   ​    => Exception e = new ArithmeticException();
+
+   ​          (상위타입)				(하위객체)
+
+3.  사용자가 숫자가 아니라 문자를 입력하면,
+
+   ​	InputMismatchException();
+   ​	=> Exception e = new InputMismatchException();
+
+   - 다양한 Exception 의 처리를 위해서 catch 블럭을 여러개 정의하고 사용할 수 있다.
+   - 상위 타입에 속하는 Exception은 가장 나중에 정의해야 한다.
+
+```java
+public static void main(String[] args) {
+		Scanner key = new Scanner(System.in);
+		try {	// 오류가 발생할 가능성이 있느 블럭을 try로 묶어주기.
+		System.out.println("배열의 요소 갯수를 입력하세요");
+		int size = key.nextInt();
+		String[] arr = new String[size];
+		System.out.println("step01");
+            
+		if (size > 3) {
+			arr[1] = new String("java");
+		}
+		System.out.println(arr[1].length());
+		} catch (ArrayIndexOutOfBoundsException e) {	
+            //블럭안에 선언된 지역변수 e (같은 것 써도 오류 안난다)
+			System.out.println("배열의 요소를 잘못 액세스");
+		} catch (NullPointerException e) {
+			System.out.println("Null 입니다");
+		} catch (Exception e) {// 모든 예외클래스의 상위클래스
+			System.out.println("오류 발생!");
+		
+        }finally {
+			System.out.println("반드시 실행할 명령문 - 무조건 실행.");
+		}
+	}
+```
+
+예외 메시지 출력 : **e.getMessage()**
+
+오류 추적의 기능 : **e.printStackTrace();**
+
