@@ -139,3 +139,14 @@ public abstract class MagicSquare interface IMagicSquare{
 ```
 
 자바에서는 다중 상속이 불가능하지만, 인터페이스로 다중 상속을 흉내낼 수 있다.
+
+## 3. 객체지향의 특징 정리
+
+* **추상성(Abstraction)** 객체를 간단하게 설명, 구체적인 구현을 숨김
+* **다형성(Polymorphism)** 한 부모의 타입으로 여러 종류의 자식의 생성,
+  *  부모의 메서드가 자식에 따라 다양한 자식의 메서드가 호출
+
+* **상속성(Inheritance)** 부모 것은 내 것, 부모의 멤버(필드, 메서드)는 자식 것이다.
+  * 단, 생성자와 private 멤버는 제외
+* **은닉성(Encapsulation)** 중요한 멤버필드를 숨긴다
+  * private 멤버필드는 자식이 사용 불가능. protected멤버는 자식이 사용 가능.
