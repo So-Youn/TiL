@@ -313,15 +313,19 @@ order by 컬럼명 정렬기준
  order by job desc;
 ```
 
+* **null과 숫자 사이의 순위는 정할 수 없기 때문에** , null은 제일 앞 또는 제일 뒤에 모아서 표기된다.
+
+  ![null 정렬](images/null 정렬.PNG)
+
 ### 3. SQL-Plus에서 사용할 수 있는 명령어
 
-cl scr: 화면 지우기
+**cl scr**: 화면 지우기
 
-set linesize 300 : 화면에 보여지는 글자수 조절
+**set linesize 300 **: 화면에 보여지는 글자수 조절
 
-desc 테이블명 : 테이블 구조 확인
+**desc 테이블명** : 테이블 구조 확인
 
-conn 계정/패스워드 : 접속하기
+**conn 계정/패스워드** : 접속하기
 
 ## 2. RDBMS
 
@@ -342,22 +346,29 @@ conn 계정/패스워드 : 접속하기
 * 요청을 받는 pc : 서버
   * DBMS 가 설치된 PC : DB서버
 
-### SQL문
+### SQL문의 종류
 
 * DDL(data defiition L)
-  * CREATE
-  * DROP
-  * ALTER
+  * CREATE : DB, 테이블 작성
+  * DROP : DB, 테이블  삭제
+  * ALTER : DB, 테이블  구성 변경
 * DML (data manipulation L)
-  * SELECT
-  * INSERT
-  * DELETE
+  * SELECT : 테이블에서 행을 검색
+  * INSERT : 테이블에 신규 행을 등록
+  * DELETE : 테이블에서 행을 삭제
   * UPDATE
-* DCL(data Control L)
-  * COMMIT
-  * ROLLBACK
-  * GRANT
-  * REVOKE
+* DCL(data Control L) - **처리 권한 부여**
+  * COMMIT: 데이터베이스 변경 내용 확정
+  * ROLLBACK : 데이터베이스 변경 내용 취소
+  * GRANT : 사용자에게 처리 권한 부여
+  * REVOKE : 사용자 처리 권한 제거
+* Query
+  * 조회 (SELECT)
+    * 기본
+    * group by having
+    * JOIN
+    * 서브쿼리
+    * 함수
 
 
 
