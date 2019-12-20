@@ -62,9 +62,9 @@ ORACLE이 돌기위한 서버가 자동 실행으로 켜져 있어야 한다.(XE
 
 >  SQL> select sysdate from dual;
 >
-> sysdate : 오늘 날짜 조회하는 함수
+> **sysdate** : 오늘 날짜 조회하는 함수
 >
-> dual : TestTable (dummy table)
+> **dual** : TestTable (dummy table)
 
 [출력]
 
@@ -78,30 +78,29 @@ ORACLE이 돌기위한 서버가 자동 실행으로 켜져 있어야 한다.(XE
 >
 > ​	// 라인당 출력될 문자의 수를 변경해준다.
 
-
-
-제약조건은 나중에 추가할 수 있지만 , not null관련은 처음에 언급해야 한다.
-
->SQL> create table customer(				
->  2       		  id varchar2(10) primary key,				(컬럼명 컬럼타입 제약조건)
->  3       		  pass varchar2(10),
->  4        		 name varchar2(10) not null,
->  5       		  point number,
->  6      		   regdate date);  
+``` sql
+SQL> create table customer(				
+2       		  id varchar2(10) primary key,				--(컬럼명 컬럼타입 제약조건)
+3       		  pass varchar2(10),
+4        		 name varchar2(10) not null,
+5       		  point number,
+6      		   regdate date);  
+--제약조건은 나중에 추가할 수 있지만 , not null관련은 처음에 언급해야 한다.
+```
 
 조회구문
 
-> SQL> select*from tab; 
+> SQL> **select** * from tab; 
 
 ![set](C:\Users\sec\Desktop\TiL\images\set.PNG)
 
 테이블 구조 조회
 
-> SQL> desc customer
+> SQL> **desc** customer
 
 ![desc](C:\Users\sec\Desktop\TiL\images\desc.PNG)
 
-> SQL> insert into customer values('jang','1234','장동건',1000,sysdate);
+> SQL> **nsert into** customer **values**('jang','1234','장동건',1000,sysdate);
 
 데이터 저장
 
@@ -109,7 +108,7 @@ ORACLE이 돌기위한 서버가 자동 실행으로 켜져 있어야 한다.(XE
 
 
 
->  NUMBER(precision, scale) 
+>  **NUMBER(**precision, scale**)** 
 
 precision 은 소숫점을 포함한 전체 자릿수
 
@@ -132,12 +131,12 @@ from 테이블
 
 - 커럼에 `NULL` 저장할 수 있다.
   - **Null**은 **0**이나 **space**만 입력해놓은 값과 다른 값
-  - Null 아무 값도 없는 것을 의미
+  - Null **아무 값도 없는 것**을 의미
   - 사용할 수 없고 저장되어있지 않은 상태
 
 * 컬럼명 대신 alias를 정의해서 사용할 수 있다.
   * **select 컬럼명 alias명**, **컬럼명 as alias명**, **컬럼명 "alias명"**
-  * **컬럼명 "alias명"** : alias명에 공백이 있는 경우 사용.
+  * **컬럼명 "alias명"** : alias명에 **공백이 있는 경우** 사용.
   * `alias`만 " " 사용 가능
 
 >select ename 사원명, hiredate as 입사일, sal "나의 급여"
@@ -159,7 +158,7 @@ from 테이블
 
 ![캡처](images/캡처.PNG)
 
-* 중복이 있는 경우, **중복을 제거하기 위해 **`select`문에 `distinct`를 추가할 수 있다.
+* 중복이 있는 경우, **중복을 제거하기 위해 **`select`문에  **`distinct`** 를 추가할 수 있다.
 
 > SQL> select job from emp; 
 >

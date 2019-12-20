@@ -464,3 +464,30 @@ SQL> select to_char(hire_date,'mm') 월,count(employee_id) 입사자수
   4  order by 월;
 ```
 
+```sql
+SQL> select nvl(to_char(department_id),'no department') 부서번호 											,round(avg(salary),0) 평균급여 
+2 from employees
+3 group by department_id
+4 having avg(salary)>6000;
+```
+
+## 2. 카티션 프로덕트
+
+``` sql
+SQL> select dname, ename, sal
+  2  from emp, dept;
+```
+
+- 두 테이블을 썼는데, 비교값을 명시하지 않아서 emp의 레코드 한개를 dept에 전부 대입을 하게 된다. 
+
+  - 곱하기 한 결과가 뜨기 때문에 명확한 기준을 정해줘야한다.  => **조인** [ 테이블 정규화 ]
+
+  ``` sql
+  select dname, ename, sal
+  from emp, dept
+  where emp.deptno = dept.deptno;
+  ```
+
+  
+
+  
