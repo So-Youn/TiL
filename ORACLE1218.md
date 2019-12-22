@@ -96,7 +96,7 @@ SQL> create table customer(
 
 ![desc](C:\Users\sec\Desktop\TiL\images\desc.PNG)
 
-> SQL> **nsert into** customer **values**('jang','1234','장동건',1000,sysdate);
+> SQL> **Insert into** customer **values**('jang','1234','장동건',1000,sysdate);
 
 데이터 저장
 
@@ -202,11 +202,20 @@ where hiredate > '1982/01/01';			//날짜 데이터는 ' ' 로 표현
 ```
   * 두 개 이상의 조건이 있는 경우 사용할 수 있는 연산자
   
+    ``` sql
+    select *
+    from emp
+    where deptno = 10
+           and job = 'MANAGER';
+    ```
+    
     * `and` 연산자 : 모든 조건일 일치
     
       * between A and B : and 연산과 동일
     
         ​								같은 컬럼에서 조건을 비교하는 경우
+        
+      * `Or` 연산자 보다 우선순위가 높다.
     
     ```sql
      select ename,sal
@@ -215,25 +224,18 @@ where hiredate > '1982/01/01';			//날짜 데이터는 ' ' 로 표현
     ```
     
     * `or `연산자 : 모든 조건 중 한개만 일치 ( 조건이 모두 다른 컬럼인 경우)
+    
+    ``` sql
+    select *
+    from emp
+    where deptno =10
+            or sal>=2000;
+    ```
+    
     * `in `연산자 : or연산자의 의미와 동일
       * 컬럼명 in (비교할 값,값,,,,,,)
       * 같은 컬럼에서 값을 여러개 비교해야 하는 경우
-    
-    * `not`연산자 : 부정
-
-```SQL
-select *
-from emp
-where deptno = 10
-       and job = 'MANAGER';
-```
-
-```sql
-select *
-from emp
-where deptno =10
-        or sal>=2000;
-```
+    * `not`연산자 : 조건을 부정
 
 ```sql
 select ename,job,deptno
@@ -251,6 +253,7 @@ where job not in ('MANAGER','PRESIDENT');
 
 
 * `null`값에 대한 비교
+  * 비교 연산자로는 null을 검색할 수 없다.
   * `is  null` : null인 데이터를 조회
   * `is not null` : null이 아닌 데이터를 조회						
 
@@ -364,14 +367,3 @@ order by 컬럼명 정렬기준
     * JOIN
     * 서브쿼리
     * 함수
-
-
-
-
-
-
-
-
-
-
-
