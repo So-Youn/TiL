@@ -20,7 +20,7 @@
       2  from dual;
     ```
 
-    * `substr`(문자열or컬럼명,시작위치,문자열의 갯수)
+    * `substr`(대상 문자열or컬럼명, 잘라낼 시작위치, 잘라낼 문자열의 갯수)
 
     ```sql
     SQL> select substr('oracle',2)
@@ -87,6 +87,8 @@
 
     * `concat`(문자열 or 컬럼명,문자열or컬럼명 ) : `||`연산자와 동일 (문자열 연결)
 
+      * 문자열 연결의 경우, 결합하는 문자가 `NULL`이면 결과도 `NULL`이 된다.
+
     * `LPAD` (문자열 or컬럼명, 출력할 문자열의 길이, 채움문자)
 
       : **전체 출력할 문자열의 길이**에 문자열을 출력한 후 남는 공간에 정의한 문자를 채워 출력해주는 함수(왼쪽)
@@ -102,7 +104,7 @@
       연속된 문자만 제거.
 
     * `rtrim`(문자열 or 컬럼명, 제거할 문자)
-
+  
       :컬럼에서 매개변수로 정의한 문자를 오른쪽에서 찾아 모두 제거
 
 ``` sql
@@ -155,7 +157,9 @@ oracledbms
 ```
 
 * 숫자 함수
-  * round(숫자, 반올림할 위치) : 반올림
+  * `ABS` : 절댓값 구하는 함수
+  * `MOD`(n,p) : (n%p), 나머지 값을 구하는 함수
+  * `round`(숫자, 반올림할 위치) : 반올림
 
 | -2   |  -1  |     0     |      1      |  2   |  3   |
 | ---- | :--: | :-------: | :---------: | :--: | :--: |
@@ -237,7 +241,16 @@ ROUND(125.888,-1)
 
 * 날짜함수
 
-  **sysdate** - 오늘 날짜 ( 날짜 데이터는 연산이 가능하다)
+  * **current_date** : 현재 날짜
+  * **current_timestamp** : 날짜까지 포함된 형태로 출력  ( 현재 일시 )
+  
+  ``` sql
+  SQL> select current_timestamp from dual;
+  ---------------------------------------
+  19/12/22 17:13:13.044000 +09:00
+  ```
+  
+  * **sysdate** - 오늘 날짜 ( 날짜 데이터는 연산이 가능하다)
 
 ``` sql
 SQL> select sysdate-5, sysdate,sysdate+5 from dual;
@@ -246,6 +259,20 @@ SQL> select sysdate-5, sysdate,sysdate+5 from dual;
 ​	SYSDATE  -  SYSDATE      SYSDATE+
 -------- -------- --------
 ​	19/12/14 	19/12/19 	19/12/24
+
+* **extract** : 날짜 요소 추출하기		
+
+``` sql
+ extract(YEAR  from current_timestamp) as year,
+ extract(MONTH from current_timestamp) as month
+ from dual;
+ 
+     YEAR      MONTH
+--------- ----------
+     2019         12
+```
+
+
 
 
 
@@ -283,6 +310,8 @@ SQL> select sysdate-5, sysdate,sysdate+5 from dual;
 
 * **그룹함수**는 그룹으로 묶인 데이터에 적용되므로, **where절에 그룹함수를 사용할 수 없다.**
 
+* 우리말로 '~마다' , '~별', '~단위' 등으로 표현되는 문구가 `group by`이다. 
+
 * `groub by`를 적용한 후에 사용할 함수
   
 	``` sql
@@ -291,9 +320,10 @@ SQL> select sysdate-5, sysdate,sysdate+5 from dual;
     3  group by deptno;
   ```
   
-  * ( 통계, 집계관련 함수)
   * 그룹으로 묶이지 않으면 작성할 수 없다.
-  * `sum`,`avg`,`max`,`min`,`count` 등
+  * `sum`,`avg`,`max`,`min`,`count` 등 통계, 집계관련 함수
+    * **count(*)** 로 지정시 **null 포함** 한 모든 행을 집계한다.
+    * **count(컬럼명)**은 null을 제외한 행 수 계산.
 
 ```sql
 SQL> select ename, sal, comm
@@ -319,18 +349,23 @@ SQL> select sum(sal),avg(sal),max(sal),min(sal),count(sal)
 그룹으로 묶이지는 않았지만, 10번 부서에 대한 통계값을 구함으로써 출력이 될 수 있음.
 
 * **그룹화 순서**
+  
+  ```  sql
+  select 컬럼...
+  from 테이블...
+  where 조건...
+  group by 그룹화할 컬럼명(함수를 포함한 식도 가능)
+  having --group by 한 결과에 적용할 조건. 
+  order by 정렬할 컬럼명
+  ```
+  
   * 테이블에 저장된 레코드를 그룹화하여 분류하고 싶은 경우 사용
   * `select` 절에는 `group by` 절에 **명시한 컬럼명과 그룹함수만** 사용할 수 있다.
+  * `group by구`는 `select 구`에서 사용한 별명을 사용할 수 없다.
   * 데이터가 복잡한 경우 **group by절에 두 개 이상의 컬럼을 명시**할 수 있다.
+    * 실행 순서 : FROM - WHERE - GROUP BY - SELECT
 
-``` sql
-select 컬럼...
-from 테이블...
-where 조건...
-group by 그룹화할 컬럼명(함수를 포함한 식도 가능)
-having --group by 한 결과에 적용할 조건. 
-order by 정렬할 컬럼명
-```
+
 
 ``` sql
 SQL> select job, avg(sal) 임금평균
@@ -352,11 +387,10 @@ SQL> select job,deptno,count(empno),max(sal)
   4  order by job;
 ```
 
-
-
 * **group by 하기 전에 적용해야 하는 조건**은 **where절**에 정의
 * group by 한 **결과에 조건을 적용**해야 하는 경우 having 절 이용
   *  **조건에 그룹함수 써야하면 having에 추가.**
+  *  즉, 그룹함수를 사용할 수 있는 곳은 `SELECT구` 와 `HAVING구`(그리고`ORDER BY구`) 뿐이다.
 
 ```sql
 SQL> select job,avg(sal)
