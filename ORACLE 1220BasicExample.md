@@ -168,5 +168,42 @@ SQL> select ename, job,hiredate
   4  order by job desc, hiredate desc;
 ```
 
+1. 부서 이름(department_name) 별 직원들의 평균연봉(salary) 을 조회하시오.단,'70번’ 부서의 직원 평균 연봉보다 평균 연봉이 이하인 부서 정보만 출력되어야 합니다.
+
+```SQL
+SQL> select d.department_name, avg(e.salary)
+  2  from employees e, departments d
+  3  where e.department_id = d.department_id
+  4  group by  d.department_name
+  5  having  avg(e.salary)<=(select avg(salary)
+  6                          from employees e
+  7                     where department_id = 70);
+```
+
+![image-20191223210344545](images/image-20191223210344545.png)
+
+2.각 부서(department_id)별로 최고 연봉(salary)를 받는 사원의 사번(employee_id), 성(last_name)과 연봉(salary)을 조회하시오. 단 조회결과는 연봉의 내림차순으로 정렬되어 나타나야 합니다.
 
 
+``` sql
+SQL> select employee_id,last_name,salary,department_id
+  2  from employees
+  3  where (department_id,salary) in (select department_id,max(salary)
+  4                                 from employees
+  5                                 group by department_id)
+  6   order by salary desc;
+```
+
+![image-20191223210515260](images/image-20191223210515260.png)
+
+3. Fox 사원(last_name)의 관리자 사원번호, 이름(last_name), 입사일 및 급여를 표시하는 SQL문을 작성하십시오.alias를 포함하여 실행결과와 동일하게 출력되어야 합니다.
+
+
+``` sql
+SQL> select m.employee_id,m.last_name,m.hire_date,m.salary
+  2  from employees m, employees e
+  3  where e.manager_id =m.employee_id
+  4             and e.last_name='Fox';
+```
+
+![image-20191223210609352](images/image-20191223210609352.png)
