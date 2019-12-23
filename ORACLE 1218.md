@@ -26,7 +26,7 @@
 
 ORACLE이 돌기위한 서버가 자동 실행으로 켜져 있어야 한다.(XE, Listener)
 
-![자동실행](C:\Users\sec\Desktop\TiL\images\자동실행.PNG)
+![image-20191223205452676](images/image-20191223205452676.png)
 
 계정 생성하는 것은 관리자 계정에서밖에 하지 못한다. 관리자 계정으로 접속해야 한다.
 
@@ -88,13 +88,13 @@ SQL> create table customer(
 
 > SQL> **select** * from tab; 
 
-![set](C:\Users\sec\Desktop\TiL\images\set.PNG)
+![image-20191223205538477](images/image-20191223205538477.png)
 
 테이블 구조 조회
 
 > SQL> **desc** customer
 
-![desc](C:\Users\sec\Desktop\TiL\images\desc.PNG)
+![image-20191223205617667](images/image-20191223205617667.png)
 
 > SQL> **Insert into** customer **values**('jang','1234','장동건',1000,sysdate);
 
@@ -289,7 +289,7 @@ from emp
 where ename like '%A%';
 ```
 
-![A LIKE](images/A LIKE.PNG)
+
 
 ### 2. 데이터 정렬
 
@@ -313,7 +313,7 @@ order by 컬럼명 정렬기준
 
 * **null과 숫자 사이의 순위는 정할 수 없기 때문에** , null은 제일 앞 또는 제일 뒤에 모아서 표기된다.
 
-  ![null 정렬](images/null 정렬.PNG)
+  ![image-20191223205723806](images/image-20191223205723806.png)
 
 ### 3. SQL-Plus에서 사용할 수 있는 명령어
 
