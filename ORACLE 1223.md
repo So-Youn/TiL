@@ -163,10 +163,8 @@ Drop table 테이블명
     ERROR at line 1:
   ORA-02290: check constraint (SCOTT.MEMBER_CK) violated
   ```
-```
-  
-    ``` SQL
-    SQL> alter table member
+```sql
+     SQL> alter table member
       2  drop constraint MEMBER_CK;
       -- 삭제 가능
 ```
@@ -206,11 +204,7 @@ SQL> select myorder_seq.currval from dual;
 SQL> drop sequence myorder_seq;
 ```
 
-
-
-ERD : 테이블 산출물
-
-테이블 명 변경
+* 테이블 명 변경
 
 ``` sql
 alter table
@@ -218,6 +212,8 @@ myorder rename to orderinfo;
 ```
 
 ## 4] shop 테이블 만들기
+
+ERD : 테이블 산출물
 
 ![image-20191223213134978](images/image-20191223213134978.png)
 
