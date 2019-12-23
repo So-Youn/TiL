@@ -70,3 +70,64 @@ public class BeakJoon {
 }
 ```
 
+## 최솟값과 최댓값
+
+첫째 줄에 정수의 개수 N (1 ≤ N ≤ 1,000,000)이 주어진다. 둘째 줄에는 N개의 정수를 공백으로 구분해서 주어진다. 모든 정수는 -1,000,000보다 크거나 같고, 1,000,000보다 작거나 같은 정수이다.
+
+``` java
+import java.util.Scanner;
+public class BeakJoonTest01 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		int[] arr = new int[N];
+		for (int i = 0; i <arr.length; i++) {
+			arr[i] = sc.nextInt();
+		}
+			int min = arr[0];
+			for (int i = 0; i <arr.length; i++) {
+				min = Math.min(min, arr[i]);
+			}
+			int max = arr[0];
+			for (int i = 0; i <arr.length; i++) {
+				max = Math.max(max, arr[i]);
+			}
+	
+		sc.close();
+		System.out.print(min+" "+max);
+
+	}
+}
+
+```
+
+## 최댓값과  최댓값 위치
+
+``` java
+import java.util.Scanner;
+public class BeakJoonTest01 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[9];
+		for (int i = 0; i <arr.length; i++) {
+			arr[i] = sc.nextInt();
+		}
+			int max = arr[0]; // 기준이 될 첫번 째 값을 max에 넣음 
+			int count = 0;	  // 최대값 위치 count 할 변수 생성 	
+			for (int i = 1; i <arr.length; i++) {  // 비교는 다음 수 부터
+				if (arr[i]>max) {
+					max = arr[i];
+					count=i+1;
+				}
+			}
+		
+		sc.close();
+		
+		System.out.println(max);
+		System.out.println(count);
+		}
+}
+```
+
