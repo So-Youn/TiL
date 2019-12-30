@@ -180,7 +180,7 @@ SQL> select d.department_name, avg(e.salary)
   7                     where department_id = 70);
 ```
 
-![image-20191223210344545](images/image-20191223210344545.png)
+
 
 2.각 부서(department_id)별로 최고 연봉(salary)를 받는 사원의 사번(employee_id), 성(last_name)과 연봉(salary)을 조회하시오. 단 조회결과는 연봉의 내림차순으로 정렬되어 나타나야 합니다.
 
@@ -194,7 +194,7 @@ SQL> select employee_id,last_name,salary,department_id
   6   order by salary desc;
 ```
 
-![image-20191223210515260](images/image-20191223210515260.png)
+
 
 3. Fox 사원(last_name)의 관리자 사원번호, 이름(last_name), 입사일 및 급여를 표시하는 SQL문을 작성하십시오.alias를 포함하여 실행결과와 동일하게 출력되어야 합니다.
 
@@ -206,4 +206,3 @@ SQL> select m.employee_id,m.last_name,m.hire_date,m.salary
   4             and e.last_name='Fox';
 ```
 
-![image-20191223210609352](images/image-20191223210609352.png)
