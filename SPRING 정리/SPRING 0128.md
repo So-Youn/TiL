@@ -165,6 +165,8 @@ action.run(request, response);
 
   * 1~4는 한번만, 5번을 만들어 6번에 등록하는 과정만 반복 수행하면 된다.
 
+![image-20200129102335843](images/image-20200129102335843.png)
+
 ### Spring MVC 구성요소
 
 > Spring MVC를 구축하고 웹을 실행해야 하는데,
@@ -174,10 +176,49 @@ action.run(request, response);
 > 이를 위해 모든 요청이 **DispatcherServlet**이라는 서블릿을 통해 들어올 수 있도록 처리해야 한다.
 
 1. **DispatcherServlet** : 클라이언트의 모든 요청을 처리하기 위해 첫 번째로 실행되는 서블릿
+
 2. **HandlerMapping** : 클라이언트가 요청한 path를 분석해서 어떤 컨트롤러를 실행해야 하는지 찾아서**DispatcherServlet**으로 넘겨주는 기능을 하는 객체
+
+   * **HandlerMapping** 을 따로 등록하지 않으면 기본으로 설정된 **HandlerMapping** 이 동작하고 기본으로 설정된 **HandlerMapping** 객체는 <bean>의 name속성에서 path와 일치하는 빈(객체)을 찾아서 **DispatcherServlet** 으로 넘겨준다.*(return)*
+
+   * 이름으로 등록하는 방법
+
+   [springmvc1]
+
+   ```xml
+   <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+   		<property name="mappings">
+   			<props>
+   				<prop key="/index.do">index</prop> 
+   				<prop key="/test.do">test</prop>
+   				<prop key="/search.do">search</prop>
+   			</props>
+   		</property>
+   	</bean>
+   ```
+
+   [springmvc2]
+
+   ```xml
+   	<bean id ="test" class="test.TestController"/>
+   	<bean id ="index" class="test.IndexController"/>
+   	<bean id ="search" class="member.SearchController"/>
+   	<!-- spring이 제공하는 viewResolver를 등록 -->
+   	<bean id= "viewResolver"
+   		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+   		<property name="prefix" value="/WEB-INF/"/>
+   		<property name="suffix" value=".jsp"/>
+   	</bean>
+   ```
+
+   
+
 3. **Controller** : 클라이언트의 요청을 처리하는 객체
+
    * DAO의 메소드를 호출하는 기능을 정의
+
 4. **ModelAndView** : **Controller** 에서 `DAO`의 메소드 실행결과로 만들어진 데이터에 대한 정보나 응답할 VIEW에 대한 정보를 갖고 있는 객체
+
 5. **ViewResolver** :  **ModelAndView** 에 저장된 VIEW의 정보를 이용해서 실제 어떤 VIEW를 실행해야 하는 지 정보를 넘겨주는 객체
 
 * 스프링MVC를 구축하면 위의 클래스들이 자동으로 실행되며 일처리를 한다.
@@ -187,4 +228,19 @@ action.run(request, response);
 * 기본 설정을 이용하는 경우 개발자는 **Controller**만 작성하고 설정파일이나 어노테이션@으로 등록하면 된다.
 
 **DispatcherServlet**에서 path를 분석한 뒤, **HandlerMapping** 에 갖고있는 .do 파일에 대해 의뢰한다.
+
+
+
+
+
+* context : web project
+
+```xml
+<Context docBase="frontController1" path="/frontController1" reloadable="true"
+					source="org.eclipse.jst.jee.server:frontController1" />
+<Context docBase="frontController" path="/frontController" reloadable="true"
+					source="org.eclipse.jst.jee.server:frontController" />
+<Context docBase="Springmvc" path="/Springmvc"	reloadable="true" 											source="org.eclipse.jst.jee.server:Springmvc" />
+<Context docBase="springmvctest" path="/springmvctest" reloadable="true" 									source="org.eclipse.jst.jee.server:springmvctest" />
+```
 
