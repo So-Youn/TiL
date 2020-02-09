@@ -138,7 +138,7 @@ https://blog.mybatis.org/
 
 **4. Controller에서 ServiceImpl의 메소드를 호출해서 작업할 수 있도록 정의**
 
-**5. Controller에서 response하는 뷰에서 Controller에서 공유해준 데이터를 꺼내서 출려가기(select 작업)**
+**5. Controller에서 response하는 뷰에서 Controller에서 공유해준 데이터를 꺼내서 출력하기(select 작업)**
 
 **6. tiles 설정파일에서 뷰 등록**
 
