@@ -1,0 +1,91 @@
+# 페이징 처리
+
+### 알고리즘 파악
+
+![image-20200209195311384](images/image-20200209195311384.png)
+
+* 만약 현재 page가 5일 경우, countPage가 10이기 때문에, 마지막page는 (시작page~ **10page**) 임을 알 수 있다.
+  * 현재 page=5에서 1page를 찾으려면 (시작 page) countPage로 나누어 주어야 한다.
+
+* 마지막 페이지는 countPage를 더하면 된다. (단, 더한 뒤 1을 꼭 빼주어야 한다.)
+
+![image-20200209195711156](images/image-20200209195711156.png)
+
+* 현재 page가 22인 경우 
+  * 단순히 255개의 게시물이 있을 경우 총 26페이지 존재.
+  * 22페이지가 있는 곳에서 21~30페이지가 보일 것.
+  * 하지만 26페이지까지이기 때문에 단순히 countPage를 더하는 것만으로는 안된다.
+  * 이 때 마지막 페이지는 총 페이지 수로 대체를 해주어야 한다.
+
+![image-20200209202053602](images/image-20200209202053602.png)
+
+* 일반적으로 게시판을 검색할 때에는 최근에 작성한 순서대로 게시물을 조회
+
+```sql
+select rownum as rnum ,id, name, content,createdate
+from board
+oder by createdate
+```
+
+*  MyBatis는 데이터를 즉시 받아와서 resultType 이나 resultMap 에 정의된 대로 데이터를 bean 에 저장하기 때문에 원하는 범위의 게시물을 가져와야 한다.
+* 위의 쿼리문은 순서대로 출력이 되지 않는다. ( rownum은 oder by 가 이루어지기 전에 이루어지기 때문이다. )
+
+```sql
+select rownum, A.id, A.name, A.content, A.createdate
+from (
+    select id, name, content, createdate
+    from board
+    order by createdate) A
+```
+
+* 속도 저하를 해결하기 위해  **두 번의 서브쿼리 형태**
+  * ROW NUMBER 을 이용할 때에는 between 형태를 이용하지 않도록 주의!
+
+```sql
+select X.rnum, X.id, X.name, X.content, X.createdate
+from ( 
+    select rownum as rnum, A.id, A.name, A.content, A.createdate
+    from (
+        select id, name, content, createdate
+        from board
+        order by createdate) A
+    where rownum <= 30) X
+where X.rnum >= 21
+```
+
+*  **createdate** 와 같은 날짜형은 String으로 받는 경우가 많기 때문에 이를 변환해서 처리한다.
+  * 하지만, 이 또한 모든 게시물에 대한 날짜 정보 변환을 하기 때문에 가장 마지막 단계에서 해준다.
+
+```sql
+select id, name, content, to_char(createdate, 'yyyy-MM-dd') as createdate
+        from board
+        order by createdate)
+        --- 생략
+```
+
+* 매끼 sql
+
+```sql
+select *
+	from (
+    select * 
+        from (
+        select recipe_id as rnum,name, member_id,register_date,img_url_main
+        from recipe oder by register_date) a
+        where rnum<=10)x
+	oder by register_date desc;
+```
+
+```xml
+
+ 	<select id="listall" resultType="recipe">
+select name, member_id,register_date,img_url_main
+  	from(
+        select count(recipe_id) as rnum,name, member_id,register_date,img_url_main
+        from recipe 
+        oder by register_date) a
+        where rnum<=10
+        oder by register_date desc               
+  	</select>
+```
+
