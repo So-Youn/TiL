@@ -42,6 +42,7 @@ home[홈디렉토리]
 <pre>[root@localhost ~]# ls
 anaconda-ks.cfg       <font color="#005FFF">공개</font>      <font color="#005FFF">문서</font>      <font color="#005FFF">비디오</font>  <font color="#005FFF">서식</font>
 initial-setup-ks.cfg  <font color="#005FFF">다운로드</font>  <font color="#005FFF">바탕화면</font>  <font color="#005FFF">사진</font>    <font color="#005FFF">음악</font>
+</pre>
 
 
 * root계정에서 cd / -> ls 하면 아래 사진에서 다른위치에 있는 폴더들을 확인할 수 있음.
