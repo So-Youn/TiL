@@ -85,11 +85,11 @@ initial-setup-ks.cfg  <font color="#005FFF">다운로드</font>  <font color="#0
 
 #### 3. 유선네트워크 확인
 
-![image-20200212095417154](C:/Users/sec/Desktop/TiL/Big Data/images/image-20200212095417154.png)
+![image-20200215144706024](images/image-20200215144706024.png)
 
-![image-20200212094340976](C:/Users/sec/Desktop/TiL/Big Data/images/image-20200212094340976.png)
+![image-20200215144609806](images/image-20200215144609806.png)
 
-![image-20200212094450968](C:/Users/sec/Desktop/TiL/Big Data/images/image-20200212094450968.png)
+![image-20200215144731045](images/image-20200215144731045.png)
 
 #### 4. ip 
 
@@ -146,7 +146,8 @@ Last login: Wed Feb 12 20:15:27 2020 from 192.168.111.128
   * **systemctl** : 서비스 관리
     - 서비스 상태 보기, disable시키기, 서비스 start시키기 등
 
-<pre>[root@hadoop01 ~]# systemctl list-units --type=service
+<pre>[root@hadoop01 ~]# systemctl list-units --type=service</pre>
+
 
 
 * **특정** 서비스의 status 보기
@@ -227,13 +228,13 @@ hosts                                         100%  100    49.5KB/s   00:00 </pr
 
 * ssh ONLY
 
-![image-20200215135308787](C:/Users/sec/Desktop/TiL/Big Data/images/image-20200215135308787.png)
+![image-20200215144810439](images/image-20200215144810439.png)
 
-![image-20200215135513936](C:/Users/sec/Desktop/TiL/Big Data/images/image-20200215135513936.png)
+![image-20200215144830542](images/image-20200215144830542.png)
+
+![image-20200215145001779](images/image-20200215145001779.png)
 
 
-
-![image-20200212152101202](C:/Users/sec/Desktop/TiL/Big Data/images/image-20200212152101202.png)
 
 <pre>[root@hadoop01 ~]# su hadoop 
 [hadoop@hadoop01 root]$ cd ~
@@ -243,6 +244,6 @@ hosts                                         100%  100    49.5KB/s   00:00 </pr
 logout
 </pre>
 
-![image-20200212152514054](C:/Users/sec/Desktop/TiL/Big Data/images/image-20200212152514054.png)
+![image-20200215145036452](images/image-20200215145036452.png)
 
 
