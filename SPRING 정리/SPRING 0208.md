@@ -1,6 +1,4 @@
-# 페이징 처리
-
-### 알고리즘 파악
+## 페이징 처리
 
 ![image-20200209195311384](images/image-20200209195311384.png)
 
@@ -87,5 +85,29 @@ select name, member_id,register_date,img_url_main
         where rnum<=10
         oder by register_date desc               
   	</select>
+```
+
+## 쿠키
+
+연결이 끊겼을 때 어떤 정보를 지속적으로 유지하기 위한 수단으로 **쿠키**라는 방식을 사용한다.
+
+쿠키는 서버에서 생성하며 서버가 아닌 클라이언트 측에 특정 정보를 저장한다. 서버에 요청할 땜다 쿠키의 속성값을 참조 or 변경할 수 있다.
+
+쿠키는 4kb로 용량이 제한적이며, 300개까지 데이터 정보를 가질 수 있다.
+
+![image-20200215171631133](images/image-20200215171631133.png)
+
+* setMaxAge() : 쿠키의 유효기간(유지 시간) 설정
+* setpath(): 쿠키 사용의 유효 디렉토리를 설정한다.
+* setValue() : 쿠키의 값을 설정한다.
+* getName() : 쿠키의 이름을 얻는다.
+
+```html
+<%	 Cookie cookie = Cookie("cookieN","cookieV"); //쿠키이름,쿠키value
+	 cookie.setMaxAge(60*60); //1시간
+	 response.addCookie(cookie);
+	 
+	%>
+	<a href="cookieget.jsp">cookieget</a>
 ```
 
