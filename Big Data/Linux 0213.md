@@ -275,7 +275,6 @@ hadoop-1.2.1.tar.gz                           100%   61MB  48.3MB/s   00:01
 </pre>
 
 <pre>[hadoop@hadoop01 ~]$ /home/hadoop/hadoop-1.2.1/bin/stop-all.sh</pre>
-
 * **JPS** 
   * 자바 프로세스를 확인
 
