@@ -64,12 +64,10 @@ Hadoop04를 복사해서 테스트 계정을 만들어준다.
 * HDFS의 (특정) 폴더 지우기
 
 <pre>[hadoop@hadoop01 hadoop-1.2.1]$ ./bin/hadoop fs  -rmr  /input</pre>
-
 * 파일 실행시키기
   * hdfs.exam.HDFSCopyTest 는 실행시키고 싶은 클래스명 위치
 
 <pre>[hadoop@hadoop01 hadoop-1.2.1]$ ./bin/hadoop jar ../multi-hadoop-examples.jar hdfs.exam.HDFSCopyTest /user/hadoop/output.txt /copytest</pre>
-
 
 
 #### 머신 절전 모드
