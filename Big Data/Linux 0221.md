@@ -47,3 +47,97 @@
 * **Driver** :  `MultipleOutputs`으로 출력될 경로를 Path에 설정
   * prefix로 구분문자열을 정의
   * 
+
+
+
+
+
+
+
+<pre>[hadoop@hadoop01 ~]$ /home/hadoop/hadoop-1.2.1/bin/hadoop fs -put /home/hadoop/hadoop-1.2.1/*.csv /input
+[hadoop@hadoop01 ~]$ /home/hadoop/hadoop-1.2.1/bin/hadoop fs -lsr /input
+-rw-r--r--   3 hadoop supergroup  127162942 2020-02-24 18:53 /input/1987.csv
+....
+</pre>
+
+![image-20200224100852513](images/image-20200224100852513.png)
+
+* 고정 IP설정 작업
+  * 현재는 # 주석처리 된 상태.
+
+![image-20200224101315636](images/image-20200224101315636.png)
+
+![image-20200224101855726](images/image-20200224101855726.png)
+
+![image-20200224102505197](images/image-20200224102505197.png)
+
+* 위의 설정파일 설정 과정 모두 다른 머신으로 복사
+
+<pre>[hadoop@hadoop01 ~]$ scp /home/hadoop/hadoop-1.2.1/conf/* hadoop@hadoop02:/home/hadoop/hadoop-1.2.1/conf/
+</pre>
+
+
+
+
+
+
+
+
+
+![image-20200224104612515](images/image-20200224104612515.png)
+
+![image-20200224111630091](images/image-20200224111630091.png)
+
+* 실제 Spring에서 인식할 수 있도록 변경
+  * conf 클래스 추가
+
+![image-20200224104235480](images/image-20200224104235480.png)
+
+* library 추가 (JARs)
+
+![image-20200224104334697](images/image-20200224104334697.png)
+
+* Driver에서 명령행 매개변수 받게 설정해놨었다.
+
+  ![image-20200224104828838](images/image-20200224104828838.png)
+
+  아래와 같이  String_prompt 설정.
+
+![image-20200224104801881](images/image-20200224104801881.png)
+
+* 상대경로 실행
+
+![image-20200224104954662](images/image-20200224104954662.png)
+
+   * ![image-20200224112016378](images/image-20200224112016378.png)
+   * 이와 같은 경로 관련 문제 발생
+
+* Spring에서 권한 관련 오류 발생시 아래와 같이 설정해준다.
+
+
+
+![image-20200224111042617](images/image-20200224111042617.png)
+
+
+
+* Jar파일 경로 설정 (수동)
+
+![image-20200224112452869](images/image-20200224112452869.png)
+
+![image-20200224112603450](images/image-20200224112603450.png)
+
+* 새로 생긴 mapred-exam.jar 에 add to build path 를 눌러준다.
+  * (절대경로 설정 )
+
+![image-20200224113444442](images/image-20200224113444442.png)
+
+1로 시작하는 1987,1988.csv가 전부 실행된다.
+
+실행할 때마다 mapred_exam.jar를 업데이트 해주어야 한다.
+
+[결과]
+
+
+
+![image-20200224131257044](images/image-20200224131257044.png)
+
