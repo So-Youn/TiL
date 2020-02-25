@@ -220,13 +220,17 @@ hadoop-1.2.1.tar.gz                           100%   61MB  48.3MB/s   00:01
 
 ![image-20200215152847063](images/image-20200215152847063.png)
 
+* hadoop-env.sh 수정
+
 ![image-20200215152907590](images/image-20200215152907590.png)
 
 * export 행 수정
-  * 하둡이 자바를 쓰기 위한 경로를 알려 준다.
+  * 하둡이 자바를 쓰기 위한 경로(*즉, 실제 jdk가 설치된 경로*)를 알려 준다.
 * master 
+  * 보조네임노드를 실행할 서버
   * localhost 를 지워주고 secondary namenode로 이름 설정.
 * slaves
+  * 데이터 노드를 실행할 서버
   * datanode와 task tracker
 
 ![image-20200215153013848](images/image-20200215153013848.png)
@@ -247,13 +251,18 @@ hadoop-1.2.1.tar.gz                           100%   61MB  48.3MB/s   00:01
 
 ![image-20200215154003499](images/image-20200215154003499.png)
 
+* 완전 분산 모드이기 때문에 복제본 개수 3으로 설정
+  * HDFS에 데이터를 저장하면 3개의 복제본이 생성된다.
+
 ![image-20200215154206404](images/image-20200215154206404.png)
+
+
 
 * pc끼리 서로 통신해야 하기 때문에 namenode 와 secondary 노드의 정보를 나타내 준다. 
 
 ![image-20200215154226140](images/image-20200215154226140.png)
 
-* 모든 서버에 복사해주기 
+* 네임노드에서 모든 수정 작업이 완료되면 `SCP` 명령어를 통해 **모든 서버에 복사**해주기 
 
 
 <pre>[hadoop@hadoop01 ~]$ scp /home/hadoop/hadoop-1.2.1/conf/* hadoop@hadoop04:/home/hadoop/hadoop-1.2.1/conf
@@ -262,6 +271,8 @@ hadoop-1.2.1.tar.gz                           100%   61MB  48.3MB/s   00:01
 ## Hadoop 실행
 
 * HDFS 라는 데이터 장소를 포맷해준다.
+* 네임노드 초기화
+  * 하둡 명령어는 하둡 홈 디렉토리에 있는 `bin`디렉토리에 저장돼 있다.
 
 <pre>[hadoop@hadoop01 ~]$ /home/hadoop/hadoop-1.2.1/bin/hadoop namenode -format
 </pre>
