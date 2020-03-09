@@ -46,7 +46,6 @@
     * `MultipleOutputs`객체를 해제 ( 반드시 처리 )
 * **Driver** :  `MultipleOutputs`으로 출력될 경로를 Path에 설정
   * prefix로 구분문자열을 정의
-  * 
 
 
 
@@ -140,4 +139,49 @@
 
 
 ![image-20200224131257044](images/image-20200224131257044.png)
+
+* air로 시작하는 모든 것 지우기
+
+<pre>[hadoop@hadoop01 ~]$ /home/hadoop/hadoop-1.2.1/bin/hadoop fs -rmr /mywork/air*
+</pre>
+
+* 파일명에 `( )` 괄호가 있을 때
+  * 쌍따옴표 사용
+
+<pre>[hadoop@hadoop01 ~]$ /home/hadoop/hadoop-1.2.1/bin/hadoop fs -rmr /air/&quot;2008 (1)&quot;.csv
+</pre>
+
+
+
+![image-20200309105200283](images/image-20200309105200283.png)
+
+* 작업 전 JAR파일이 존재하는지 확인하기
+
+![image-20200309114136229](images/image-20200309114136229.png)
+
+* 만약 없으면 JAR파일 EXPORT
+
+![image-20200309114051170](images/image-20200309114051170.png)
+
+
+
+![image-20200309114418990](images/image-20200309114418990.png)
+
+## Combiner Class
+
+콤바이너 클래스는 셔플할 데이터의 크기를 줄이는 데 도움이 된다. 
+
+매퍼의 출력 데이터를 입력 데이터로 전달받아 연산을 수행한다.
+
+* Combiner 사용하지 않았을 때
+
+![image-20200309125454666](images/image-20200309125454666.png)
+
+![image-20200309131845100](images/image-20200309131845100.png)
+
+* Combiner 사용할 때
+
+![image-20200309125532647](images/image-20200309125532647.png)
+
+![image-20200309132003590](images/image-20200309132003590.png)
 
