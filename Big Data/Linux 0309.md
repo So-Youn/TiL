@@ -25,6 +25,8 @@
 
 ### Airsort 예제 실습
 
+![image-20200311175135334](images/image-20200311175135334.png)
+
 * AirsortReducer
 
 ![image-20200311110410771](images/image-20200311110410771.png)
@@ -114,6 +116,16 @@ key가 계속 바뀜을 볼 수 있다.
 전부 같은 hashcode, 다른 mapkey
 
 리듀스 안에서 출력하고 싶은 형태로 조절할 수 있다.
+
+* StringBuffer 이용한 버전
+
+![image-20200311174527155](images/image-20200311174527155.png)
+
+![image-20200311174951702](images/image-20200311174951702.png)
+
+[결과]
+
+![image-20200311175047584](images/image-20200311175047584.png)
 
 ### Inner 클래스
 
