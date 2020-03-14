@@ -112,12 +112,13 @@ flume의 **실행 중인 프로세스**를 `agent`라고 부르며, source,chann
 1. type
 
    * `logger` : flume서버 콘솔에 출력이 전달
-     * flume을 실행할 때 `-Dflume.root.logger=INFO,console`를 추가
-
-   * `file_roll` : file을 읽어서 가져오는 경우
-
-     * `directory` : 읽어온 파일을 저장할 **output폴더**를 명시
-
+     
+* flume을 실행할 때 `-Dflume.root.logger=INFO,console`를 추가
+     
+* `file_roll` : file을 읽어서 가져오는 경우
+   
+  * `directory` : 읽어온 파일을 저장할 **output폴더**를 명시
+   
      ![image-20200313152039348](images/image-20200313152039348.png)
 
 <pre>[hadoop@hadoop01 ~]$ cd apache-flume-1.6.0-bin/
@@ -188,7 +189,7 @@ Connection closed.
 
 input -> source
 
-output->sink
+output->sinkg
 
 ![image-20200313144225874](images/image-20200313144225874.png)
 
@@ -200,6 +201,10 @@ output->sink
 ![image-20200313162108487](images/image-20200313162108487.png)
 
 ![image-20200313161802517](images/image-20200313161802517.png)
+
+![image-20200314144008144](images/image-20200314144008144.png)
+
+![image-20200314144032015](images/image-20200314144032015.png)
 
 #### 리눅스에서의 한/영 변환
 
