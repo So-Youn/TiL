@@ -6,7 +6,7 @@
     * 즉 , 비정형 데이터를 저장하고 있다
 
 * JSON형태*(어떠한 데이터 형태도 수용 가능)*로 내부에서 데이터를 처리한다.
-* 문서기반이기 때문에 Join이 불가능하다.
+* `문서지향`이기 때문에 Join이 불가능하다.
 * [Document](https://docs.mongodb.com/v3.6/introduction/#)
 
 ### MEAN Stack 
@@ -99,6 +99,8 @@ node.js -> 라즈베리 파이 연동이 용이하다.
 
 * `_id` : 기본키
 
+  * 값을 지정해주지 않으면 자동 생성
+
 
 
 #### 1. collection(RDBMS에서의 테이블)
@@ -130,7 +132,7 @@ MongoDB Enterprise > show collections;
 * capped collections인지 확인
 
 ```sql
-MongoDB Enterprise > db.emp_name.isCapped();
+MongoDB Enterprise > db.emp.isCapped();
 true   --> capped
 false  --> non capped
 ```
@@ -506,3 +508,4 @@ MongoDB Enterprise > db.board.update({id:"yooni"},{$pop:{"comment":-1}});
 ```
 
 ![image-20200316180241015](images/image-20200316180241015.png)
+
