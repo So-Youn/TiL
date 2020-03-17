@@ -101,9 +101,7 @@ node.js -> 라즈베리 파이 연동이 용이하다.
 
   * 값을 지정해주지 않으면 자동 생성
 
-
-
-#### 1. collection(RDBMS에서의 테이블)
+### collection(RDBMS에서의 테이블)
 
 > 관계형 데이터베이스처럼 스키마를 정의하지 않는다.
 
@@ -120,7 +118,7 @@ MongoDB Enterprise > show collections;
 
 
 
-1.  종류
+#### 1. 종류
 
 * **capped** collection  
   * 고정 사이즈 주고 생성하는 컬렉션
@@ -137,7 +135,7 @@ true   --> capped
 false  --> non capped
 ```
 
-2. Collection 관리
+#### 2. Collection 관리
 
 * 생성
 * 일반 컬렉션
@@ -219,7 +217,7 @@ shop
 
 배열 : `[]`  	/ 	객체 : `{}`
 
-[구문]
+#### [구문]
 
 [`db.collection.insert(데이터...)`](https://docs.mongodb.com/v3.6/reference/method/db.collection.insert/#db.collection.insert)
 
@@ -334,23 +332,23 @@ MongoDB Enterprise > db.emp.update({id:"kang"},{$set:{val1:3000}},{multi:true});
 
 
 
-* [구문]
+#### [구문]
 
-  * ```javascript
-    MongoDB Enterprise > db.컬렉션명.update({조건필드 : 값}, //sql의 update문 where절
-                                       	{$set:{수정할 필드 : 수정 값}},//set절
-                                       {update와 관련된 옵션 : 옵션 값})
-    ```
+* ```javascript
+  MongoDB Enterprise > db.컬렉션명.update({조건필드 : 값}, //sql의 update문 where절
+                                     	{$set:{수정할 필드 : 수정 값}},//set절
+                                     {update와 관련된 옵션 : 옵션 값})
+  ```
 
-    [예제]
-    
-  * ```javascript
-    MongoDB Enterprise > db.emp.update({id:"jang"},{$set:{pass:"abcd"}});
-    ```
+  [예제]
+  
+* ```javascript
+  MongoDB Enterprise > db.emp.update({id:"jang"},{$set:{pass:"abcd"}});
+  ```
 
-  * ```javascript
-    MongoDB Enterprise > db.emp.update({id:"kim"},{$set:{val1:3000}});
-    ```
+* ```javascript
+  MongoDB Enterprise > db.emp.update({id:"kim"},{$set:{val1:3000}});
+  ```
 
 
   * ```javascript
@@ -403,6 +401,8 @@ MongoDB Enterprise > db.score.update({dept:"인사"},{$inc:{bonus:2000}},{multi:
 ----
 
 ### 3. MongoDB에서 배열 관리
+
+#### [구문]
 
 ```javascript
 MongoDB Enterprise > db.score.update({id:"jang"}, {$set:{  info:   {city:["서울","안양"], movie:["겨울왕국2","극한직업","쉬리"]  }  } }  );;
