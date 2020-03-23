@@ -8,7 +8,7 @@
 MongoDB Enterprise > db.board.find().pretty();
 ```
 
-![image-20200317093627660](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200317093627660.png)
+![image-20200317093627660](images/image-20200317093627660.png)
 
 * 화면 클리어
 
@@ -23,7 +23,7 @@ MongoDB Enterprise > cls
 MongoDB Enterprise > db.board.update({no:2},{$push:{comment: {content:"댓글 내용",count1:5,count2:2,writedate:new Date()}}});
 ```
 
-![image-20200317094720567](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200317094720567.png)
+![image-20200317094720567](images/image-20200317094720567.png)
 
 ## MongoDB에 저장된 데이터 조회하기
 
@@ -32,7 +32,7 @@ MongoDB Enterprise > var x = db.score.findOne();
 MongoDB Enterprise > x
 ```
 
-![image-20200317095057583](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200317095057583.png)
+![image-20200317095057583](images/image-20200317095057583.png)
 
 ```javascript
 MongoDB Enterprise > x.num=120
@@ -40,7 +40,7 @@ MongoDB Enterprise > x.num=120
 
 * 데이터 삽입
 
-![image-20200317095224416](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200317095224416.png)
+![image-20200317095224416](images/image-20200317095224416.png)
 
 * 기존에 데이터가 있는 경우 insert 는 수행할 수 없지만, save 는 값을 수정해서 넣을 수 있다.
 
@@ -53,7 +53,7 @@ MongoDB Enterprise > x.num=120
     MongoDB Enterprise > db.score.save(x)
     ```
 
-![image-20200317095251661](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200317095251661.png)
+![image-20200317095251661](images/image-20200317095251661.png)
 
 * 데이터 갯수 리턴
   * javascipt 형태이기 때문에 데이터 체이닝이 가능하다.
