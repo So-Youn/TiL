@@ -31,13 +31,13 @@ HashMap처럼 키밸류(KeyValue) 형식의 데이터를 분산ㆍ저장함으�
 
 ![image-20200317163502432](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200317163502432.png)
 
-![image-20200317163336269](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200317163336269.png)
+![image-20200317163336269](images/image-20200317163336269.png)
 
-![image-20200317163442921](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200317163442921.png)
+![image-20200317163442921](images/image-20200317163442921.png)
 
 * 라이브러리 확인
 
-![image-20200317163546255](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200317163546255.png)
+![image-20200317163546255](images/image-20200317163546255.png)
 
 * 
 
@@ -104,8 +104,9 @@ C:\iot>mongoimport /d bigdata /c test /type csv /file test.csv /headerline
 
 * 현재 페이지 번호(page),size(화면에 표시할 게시글 갯수)
   
+
 **[리턴]**
-  
+
 * findAll이 처리되면 페이징된 객체를 page타입으로 리턴한다.
 
 * pageRequest에 전달한 사이즈와 page번호를 기준으로 조회한 데이터를 매핑해서 넘겨준다.

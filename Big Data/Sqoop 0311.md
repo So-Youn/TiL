@@ -4,7 +4,7 @@
 
 CLI(Command Line)기반 
 
-![image-20200311163000160](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200311163000160.png)
+![image-20200311163000160](images/image-20200311163000160.png)
 
 * hadoop에서 sqoop 설치
 

@@ -8,7 +8,7 @@
 
 **아파치 플룸**(Apache Flume)은 많은 양의 로그 데이터을 효율적으로 수집, 취합, 이동하기 위한 분산형 소프트웨어이다. 
 
-![image-20200314093557663](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200314093557663.png)
+![image-20200314093557663](images/image-20200314093557663.png)
 
 
 
@@ -20,13 +20,13 @@ file - roll 화면에 받아서 씀
 
 * Alias
 
-![image-20200314094211074](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200314094211074.png)
+![image-20200314094211074](images/image-20200314094211074.png)
 
-![image-20200314094452532](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200314094452532.png)
+![image-20200314094452532](images/image-20200314094452532.png)
 
 * DataStream : 텍스트를 있는 그대로 만들기 위함
 
-![image-20200314094844202](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200314094844202.png)
+![image-20200314094844202](images/image-20200314094844202.png)
 
 * 실행
 
@@ -35,13 +35,13 @@ file - roll 화면에 받아서 씀
 
 * 로그 분석 
 
-  ![image-20200314095250630](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200314095250630.png)
+  ![image-20200314095250630](images/image-20200314095250630.png)
 
   ![image-20200314095506527](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200314095506527.png)
 
   이렇게 에러가 난 것을 볼 수 있다.
 
-![image-20200314095705263](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200314095705263.png)
+![image-20200314095705263](images/image-20200314095705263.png)
 
 ​     위를 설정 해주어야 위의 에러가 사라진다. ![image-20200314101722703](images/image-20200314101722703.png)
 
