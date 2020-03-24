@@ -6,14 +6,15 @@
 
 ### 안드로이드의 특징 
 
-* 안드로이드 시스템 내부에서 Life cycle을 관리한다.
+* 안드로이드 시스템 내부에서 **Life cycle**을 관리한다.
 
 * **컴포넌트 기반**
+  
   * Activity  : 화면
   * service : 화면 없이 back 단에서 실행되는 기능
   * Content Provider : 앱에서 발생하는 데이터를 다른 앱에서도 사용할 수 있는 기능.
-  * Broad Cast Reciever : ??
-
+* Broad Cast Reciever : ??
+  
 * **리소스**의 **외부화** 
 
   * 리소스 : 정적 요소 (문자열 , 이미지 , 화면 디자인 등... )
@@ -64,3 +65,39 @@
 * 목록에 올라온 것 확인
 
 ![image-20200324114418176](images/image-20200324114418176.png)
+
+* ![image-20200324131839884](images/image-20200324131839884.png)
+
+* ![image-20200324132637669](images/image-20200324132637669.png)
+
+  * onCreate : 반드시 호출해야 하는 메소드. (Override)
+
+  * *R.layout.activity_main* : 리소스
+
+  * view 는 xml 기반으로 작성된다.
+
+    * TextView : lable - 디스플레이 용도 
+
+    ![image-20200324132922454](images/image-20200324132922454.png)
+
+* AndroidManifest : 앱에 대한 설명서(명세 파일)라고 생각하면 된다. 
+
+![image-20200324133724551](images/image-20200324133724551.png)
+
+* 
+
+![image-20200324134042193](images/image-20200324134042193.png)
+
+* resource 파일들의 이름은 내부에서 설정되어 있기 때문에 절대로 바꾸면 안된다. 
+
+  * 해상도에 따라 이미지가 매칭되어 보인다.
+  * **Strings** 화면에 찍을 문자열 정의
+  * 작성 시 자동으로 generate 된다.
+
+  * ![image-20200324134856130](images/image-20200324134856130.png)
+
+  
+
+  ![image-20200324134838461](images/image-20200324134838461.png)
+
+  

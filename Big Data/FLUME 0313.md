@@ -12,11 +12,11 @@
 
 * 접속한 날짜와 시간을 로그에 기록한다.
 
-![image-20200313093337934](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200313093337934.png)
+![image-20200313093337934](images/image-20200313093337934.png)
 
 * 모든 access 데이타를 볼 수 있다.
 
-![image-20200313093431581](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200313093431581.png)
+![image-20200313093431581](images/image-20200313093431581.png)
 
 # Apache Flume
 
@@ -114,11 +114,11 @@ flume의 **실행 중인 프로세스**를 `agent`라고 부르며, source,chann
    * `logger` : flume서버 콘솔에 출력이 전달
      
 * flume을 실행할 때 `-Dflume.root.logger=INFO,console`를 추가
-     
+  
 * `file_roll` : file을 읽어서 가져오는 경우
-   
+  
   * `directory` : 읽어온 파일을 저장할 **output폴더**를 명시
-   
+  
      ![image-20200313152039348](images/image-20200313152039348.png)
 
 <pre>[hadoop@hadoop01 ~]$ cd apache-flume-1.6.0-bin/
