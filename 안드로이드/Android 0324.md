@@ -101,3 +101,74 @@
   ![image-20200324134838461](images/image-20200324134838461.png)
 
   
+
+* eventlog : 실행. 에러 기록들이 담긴다. 
+
+![image-20200324135222243](images/image-20200324135222243.png)
+
+* 화면 디자인 - 속성 설정 
+
+![image-20200324141542253](images/image-20200324141542253.png)
+
+* 공통 속성 설정
+
+![image-20200324142044204](images/image-20200324142044204.png)
+
+* Ok 버튼 활성화 시키기
+
+![image-20200324152403540](images/image-20200324152403540.png)
+
+```java
+Toast.LENGTH_LONG : 토스트 메세지가 길게 화면에  나타남
+Toast.LENGTH_SHORT : 토스트 메세지가 짧게 화면에  나타남
+```
+
+
+
+![image-20200324152334395](images/image-20200324152334395.png)
+
+[결과]
+
+![image-20200324152643745](images/image-20200324152643745.png)
+
+* [새로운 프로젝트 작성 실습 ] 
+
+  * Package : exam.day01.first
+  * 프로젝트 명 : firstPro
+  * 화면에 표시된 레이블을 지우고 버튼 세개 추가 (확인, 취소, 삭제)
+  * 글꼴 변경
+  * avd 실행
+
+  ![image-20200324161801127](images/image-20200324161801127.png)
+
+![image-20200324161732168](images/image-20200324161732168.png)
+
+
+
+*  eclipse에서와 달리 Sysout 으로는 디버깅이 어렵다. 
+  * `Log.d()` 를 사용하여 콘솔창에 띄운다. 
+
+![image-20200324161525925](images/image-20200324161525925.png)
+
+* 메소드 오버라이딩
+
+![image-20200324162544811](images/image-20200324162544811.png)
+
+![image-20200324162314119](images/image-20200324162314119.png)
+
+### LifeCycle
+
+* 시작
+  * onCreate(생성) - > onStart - > onResume
+  * onCreate(생성) : 생성될 때(시작할 때) 뜨는 화면 구현 / 초기화 / Setting
+  * onStart : 서버 구현 / 재시작
+
+![image-20200324163050700](images/image-20200324163050700.png)
+
+* 일시정지 
+  * onPause - > onStop
+  * 다시 시작 시, onStart로 시작.
+  * onPause : 작업 중지
+  * onDestroy : 반납
+
+![image-20200324163228316](images/image-20200324163228316.png)
