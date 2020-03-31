@@ -1,4 +1,4 @@
-## Android View
+## :star: Android View
 
 > View : 일반적으로 컨트롤이나 위젯으로 불리는 UI  구성 요소.
 >
@@ -158,10 +158,6 @@
 
 ![image-20200325165228160](images/image-20200325165228160.png)
 
-* import 세팅
-
-![image-20200325171453929](images/image-20200325171453929.png)
-
 * android:id 
 
   ![image-20200325172552289](images/image-20200325172552289.png)
@@ -172,3 +168,17 @@
 * 런쳐 갯수만큼 생성
 
 ![image-20200325173120948](images/image-20200325173120948.png)
+
+### Button 복습
+
+* Intent 를 이용해서 버튼 실행시키기 *(MainActivity)*
+
+<img src="images/image-20200328004859594.png" alt="image-20200328004859594" style="zoom:80%;" />
+
+<img src="images/image-20200328004924453.png" alt="image-20200328004924453" style="zoom: 50%;" />
+
+* layout이동 *( MenuActivity )*
+
+<img src="images/image-20200328005045651.png" alt="image-20200328005045651" style="zoom:80%;" />
+
+<img src="images/image-20200328005118385.png" alt="image-20200328005118385" style="zoom: 67%;" />
