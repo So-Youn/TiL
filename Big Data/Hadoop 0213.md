@@ -64,17 +64,17 @@
 
 ---
 
-### # 클러스터링 ?
+## 1. 클러스터링 ?
 
 *  **컴퓨터 컬러스터**는 여러 대의 컴퓨터들이 연결되어 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 말한다.
 
-웹서버 클러스터는 각기 다른 종류의 요구들을 각기 다른 노드에서 처리하도록 할당함으로써 전반적인 응답시간을 최소화 할 수 있다.
+>  웹서버 클러스터는 각기 다른 종류의 요구들을 각기 다른 노드에서 처리하도록 할당함으로써 전반적인 응답시간을 최소화 할 수 있다.
+>
+> 즉, **여러 대를 묶어서 처리**하는 것을 말한다.
 
-즉, **여러 대를 묶어서 처리**하는 것을 말한다.
+우리는 가상머신 4대를 하나의 하둡 서버인것 처럼 사용할 것이다. **[완전 분산 모드]**
 
-우리는 가상머신 4대를 하나의 하둡 서버인것 처럼 사용할 것이다.
-
-- 4대가 서로 통신해야하니까 방화벽을 해제해야 한다.
+- 4대가 서로 통신해야 하니까 **방화벽을 해제**해야 한다.
 - 각 4대가 고유의 IP를 갖고 있어야 할 것이다.
 
 ![image-20200215145211134](images/image-20200215145211134.png)
@@ -84,11 +84,11 @@
   * HOST는 공유기를 통해 인터넷에 접근
 * **NAT**
   * guest랑 HOST 모두 공유기를 통해 인터넷에 접근
-  * GUEST를 HOST인것 처럼 사용
+  * GUEST를 HOST인 것 처럼 사용
   
 ---
 
-## 하둡 설치
+## 2. 하둡 설치
 
 빅데이터 프로그램 : **하둡** , 하이브, h베이스 등등 ...
 
@@ -104,7 +104,7 @@
 
 ![image-20200215145247785](images/image-20200215145247785.png)
 
-## rpm?
+### - rpm?
 
 * **다운로드 받고 프로그램 설치할 때 쓰는 명령어**
   * rpm은 의존 모듈이 없으면 다운을 받지 못한다.
@@ -134,18 +134,12 @@ Updating / installing...
    1:jdk1.8-2000:1.8.0_231-fcs        ################################# [100%]
 Unpacking JAR files...
 	tools.jar...
-	plugin.jar...
-	javaws.jar...
-	deploy.jar...
-	rt.jar...
-	jsse.jar...
-	charsets.jar...
-	localedata.jar...
+	...
 </pre>
 
 * 설치 됐는지 확인해보자
 
-![image-20200215151032773](images/image-20200215151032773.png)
+<img src="images/image-20200215151032773.png" alt="image-20200215151032773" style="zoom:67%;" />
 
 * hadoop02에서 C 드라이브 안의 root에 jdk 파일 설치
 
@@ -153,7 +147,7 @@ Unpacking JAR files...
 * hadoop02에 설치한 jdk 파일을 실행 **[ 원격 설치 ]**
 
 <pre>[root@hadoop01 ~]# ssh hadoop02 "rpm - Uvh jdk-8u231-linux-x64.rpm"</pre>
-* 파일을 모두 다른 hadoop에도 복사해준다.
+* 파일을 모두 다른 hadoop에도 복사해 준다.
 
 <pre>[hadoop@hadoop01 ~]$ scp /home/hadoop/hadoop-1.2.1/conf/* hadoop@hadoop04:/home/hadoop/hadoop-1.2.1/conf
 </pre>
@@ -167,9 +161,9 @@ Unpacking JAR files...
 
   ![image-20200215151835237](images/image-20200215151835237.png)
 
-* home으로 이동해준다. 
+* home으로 이동해 준다. 
 
-![image-20200215151911792](images/image-20200215151911792.png)
+<img src="images/image-20200215151911792.png" alt="image-20200215151911792" style="zoom:80%;" />
 
 * HOME으로 COPY
 
@@ -178,7 +172,7 @@ Unpacking JAR files...
 hadoop-1.2.1.tar.gz                           100%   61MB  48.3MB/s   00:01    
 </pre>
 
-* Hadoop으로 들어가서 카피가 되었는지 확인해 준다.
+* Hadoop으로 들어가서 copy가 되었는지 확인해 준다.
 
 <pre>[root@hadoop01 ~]# su hadoop
 [hadoop@hadoop01 root]$ cd ~ 
@@ -196,18 +190,18 @@ hadoop-1.2.1.tar.gz                           100%   61MB  48.3MB/s   00:01
 <pre>[hadoop@hadoop01 ~]$ tar -zxvf hadoop-1.2.1.tar.gz 
 </pre>
 
-![image-20200215152814970](images/image-20200215152814970.png)
+<img src="images/image-20200215152814970.png" alt="image-20200215152814970" style="zoom:80%;" />
 
-![image-20200215152453551](images/image-20200215152453551.png)
+<img src="images/image-20200215152453551.png" alt="image-20200215152453551" style="zoom:80%;" />
 
 *  다른 hadoop 머신에 복사
 
 <pre>[hadoop@hadoop01 ~]$ scp /home/hadoop/hadoop-1.2.1.tar.gz  hadoop@hadoop02:/home/hadoop/
 </pre>
 
-![image-20200215152632510](images/image-20200215152632510.png)
+<img src="images/image-20200215152632510.png" alt="image-20200215152632510" style="zoom:80%;" />
 
-![image-20200215152655622](images/image-20200215152655622.png)
+<img src="images/image-20200215152655622.png" alt="image-20200215152655622" style="zoom:80%;" />
 
 * **jar** 폴더는 hadoop의 라이브러리
 
@@ -226,12 +220,12 @@ hadoop-1.2.1.tar.gz                           100%   61MB  48.3MB/s   00:01
 
 * export 행 수정
   * 하둡이 자바를 쓰기 위한 경로(*즉, 실제 jdk가 설치된 경로*)를 알려 준다.
-* master 
-  * 보조네임노드를 실행할 서버
-  * localhost 를 지워주고 secondary namenode로 이름 설정.
+* masters
+  * **보조네임노드**를 실행 할 서버
+  * localhost 를 지워주고 secondary namenode로 이름 설정. - hadoop02
 * slaves
-  * 데이터 노드를 실행할 서버
-  * datanode와 task tracker
+  * **데이터 노드**를 실행할 서버
+  * datanode와 task tracker -hadoop02/03/04
 
 ![image-20200215153013848](images/image-20200215153013848.png)
 
@@ -247,47 +241,53 @@ hadoop-1.2.1.tar.gz                           100%   61MB  48.3MB/s   00:01
 
 ### 4. xml
 
-**hadoop - hadoop-1.2.1 - conf** 안에 존재한다
+* **hadoop - hadoop-1.2.1 - conf** 안에 존재한다
 
 ![image-20200215154003499](images/image-20200215154003499.png)
 
-* 완전 분산 모드이기 때문에 복제본 개수 3으로 설정
-  * HDFS에 데이터를 저장하면 3개의 복제본이 생성된다.
+* `fs.default.name` : 네임노드로 하트비트나 블록 리포트를 보낼 때 바로 이 값을 참조해 네임노드 호출
 
 ![image-20200215154206404](images/image-20200215154206404.png)
 
-
+* `dfs.replication`: 완전 분산 모드이기 때문에 복제본 갯수 3으로 설정
+  * dfs.replication이 1이면 가상 분산모드로 하둡 실행하겠다는 뜻. 
+  * HDFS에 데이터를 저장하면 3개의 복제본이 생성
+  * `가상 분산 모드` ? : 개발 pc에서 직접 하둡을 실행하거나 서버가 하나밖에 준비되지 않은 경우 
+    * 이 경우, 앞서 설정한 여섯 개의 환경설정 파일의 서버 정보를 모두 `localhost` 또는 `127.0.0.1`로 설정하면 하나의 서버에서 모든 하둡 데몬이 실행된다. 
 
 * pc끼리 서로 통신해야 하기 때문에 namenode 와 secondary 노드의 정보를 나타내 준다. 
 
 ![image-20200215154226140](images/image-20200215154226140.png)
 
-* 네임노드에서 모든 수정 작업이 완료되면 `SCP` 명령어를 통해 **모든 서버에 복사**해주기 
+* 네임노드에서 모든 수정 작업이 완료되면 `SCP` 명령어를 통해 
+
+  모든 데이터노드 서버로 네임노드의 하둡 환경설정 파일을 복사해준다. 
 
 
 <pre>[hadoop@hadoop01 ~]$ scp /home/hadoop/hadoop-1.2.1/conf/* hadoop@hadoop04:/home/hadoop/hadoop-1.2.1/conf
 </pre>
 
-## Hadoop 실행
+## 3. Hadoop 실행
 
-* HDFS 라는 데이터 장소를 포맷해준다.
-* 네임노드 초기화
+* HDFS 라는 데이터 장소를 포맷해주어야 한다. 
+* :star: 네임노드 초기화
   * 하둡 명령어는 하둡 홈 디렉토리에 있는 `bin`디렉토리에 저장돼 있다.
 
 <pre>[hadoop@hadoop01 ~]$ /home/hadoop/hadoop-1.2.1/bin/hadoop namenode -format
 </pre>
 
 * 하둡을 실행해준다.
-  * 실행 :  **start-all.sh**
-  * 종료 :  **stop-all.sh** ( 컴퓨터 끌 때 서버 꺼준다.)
+  * 데몬 실행 :  **start-all.sh**
+  * 데몬 종료 :  **stop-all.sh**
+    *  컴퓨터 끌 때 꼭 데몬 서버 꺼준다.
 
 
 <pre>[hadoop@hadoop01 ~]$ /home/hadoop/hadoop-1.2.1/bin/start-all.sh
 </pre>
 
 <pre>[hadoop@hadoop01 ~]$ /home/hadoop/hadoop-1.2.1/bin/stop-all.sh</pre>
-* **JPS** 
+* **JPS**  : 데몬 실행 여부 확인
   * 자바 프로세스를 확인
 
-![image-20200215155037969](images/image-20200215155037969.png)
+<img src="images/image-20200215155037969.png" alt="image-20200215155037969" style="zoom:80%;" />
 
