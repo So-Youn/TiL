@@ -7,7 +7,7 @@
 * 반정형 데이터
 * 비정형 데이터
 
-# 하둡 (Hadoop)
+# 하둡 (Hadoop) ?
 
 > 정형 데이터의 경우 기존의 RDBMS에 저장할 수 있지만, 웹 로그 같은 비정형 데이터를 RDBMS에 저장하기에는 데이터 크기가 너무 크다.
 
@@ -18,11 +18,13 @@
 * *기존의 RDBMS는 데이터가 저장된 서버에서 데이터를 처리하는 방식이지만,* 하둡은 여러 대의 서버에 데이터를 저장하고, 데이터가 저장된 각 서버에서 동시에 데이터를 처리한다.
 * RDBMS의 대체가 아닌 **상호보완**적인 특성.
   * 데이터의 무결성이 중요한 데이터는 기존의 RDBMS에서 처리하고, 하둡은 **배치성**으로 데이터를 저장하고 처리한다.
-  * 즉, 기업의 핵심 데이터는 RDBMS에, 핵심은 아니지만 데이터를 보관하고 처리해야 하는 경우에는 NoSQL을 이용한다는 의미...
+  * 즉, 기업의 핵심 데이터는 RDBMS에, 핵심은 아니지만 데이터를 보관하고 처리해야 하는 경우에는 NoSQL을 이용한다는 의미 
 
-## 하둡의 에코시스템
 
-![image-20200225002001202](images/image-20200225002001202.png)
+
+## - 하둡의 에코시스템:revolving_hearts:
+
+<img src="images/image-20200225002001202.png" alt="image-20200225002001202" style="zoom:80%;" />
 
 * **Sqoop**
   * 대용량 데이터 전송 솔루션
@@ -37,13 +39,11 @@
 * **HIVE**
   * 하둡 기반의 데이터웨어하우징용 솔루션
 
-빅데이터의 사례 :
 
-ex ] 추천 시스템, 신용카드 
 
-## 하둡 개발 준비
+## 1. 하둡 개발 준비
 
-### 하둡 설치 방법 
+### 1) 하둡 설치 방법 
 
 * 독립 실행 모드
   * 하둡의 기본 실행모드 (로컬 모드 )
@@ -68,7 +68,7 @@ ex ] 추천 시스템, 신용카드
 
 ---
 
-### 하둡 실행
+### 2) 하둡 실행
 
 
 * **ROOT 계정으로 로그인 한 뒤 Hadoop계정으로** 사용한다.
@@ -78,11 +78,7 @@ ex ] 추천 시스템, 신용카드
 
   * SSH로 다른 서버에 접근할 때는 **IP** 혹은 **호스트명**으로 접속할 수 있다.
 
-  * **SSH** ? 
-
-    네트워크 상의 다른 컴퓨터에 로그인하거나 원격 시스템에서 명령을 실행하고 , 다른 시스템으로 파일을 복사할 수 있게 해주는 응용 프로토콜
-
-    * SSH는 **암호화 기법**을 사용하기 때문에 통신이 노출된다 하더라도 암호화된 문자로 보인다. 
+    
 
 * 인코딩 확인
 
@@ -98,27 +94,47 @@ ko_KR.UTF-8
 
   <pre>[hadoop@hadoop01 ~]$ ssh-copy-id -i /home/hadoop/.ssh/id_rsa.pub haddop@hadoop02</pre>
 
-  
-
-* 디렉토리 몇 개 있는지 확인 
+* 디렉토리 몇 개 있는지 확인  : `fs -ls`
 
 <pre>[hadoop@hadoop01 hadoop-1.2.1]$ /home/hadoop/hadoop-1.2.1/bin/hadoop fs -ls /input
 </pre>
 
-* NOTICE.txt 생성
+* NOTICE.txt 생성 : `copyFromLocal`
 
 <pre>[hadoop@hadoop01 hadoop-1.2.1]$ /home/hadoop/hadoop-1.2.1/bin/hadoop fs -copyFromLocal NOTICE.txt /myinput
 </pre>
 
-* /wordcount_output
+## 2. 예제 실행
+
+> `wordcount` 라는 단어 갯수를 세는 프로그램을 이용.
+
+### 1) hadoop-env.sh 갯수 세기
+
+* HDFS에 파일 업로드
+
+<pre>[hadoop@hadoop01 hadoop-1.2.1]$ .bin/hadoop fs -put conf/hadoop-env.sh conf/hadoop-env.sh
+</pre>
+
+* 하둡 명령어 이용해 jar 파일 실행
+
+<pre>[hadoop@hadoop01 hadoop-1.2.1]$ ./bin/hadoop jar hadoop-examples-1.2.1.jar wordcount conf/hadoop-env.sh wordcount_output
+</pre>
+
+* `cat`명령어 이용해 출력값 확인
+
+<pre>[hadoop@hadoop01 hadoop-1.2.1]$ .bin/hadoop fs -cat wordcount_output/part-r-00000
+...출력값
+</pre>
+
+### 2) STS 
 
 <pre>[hadoop@hadoop01 hadoop-1.2.1]$ ./bin/hadoop jar hadoop-examples-1.2.1.jar wordcount /myinput/NOTICE.txt /wordcount_output
 </pre>
 
-* spring - java project 로 작성
-  * 하둡은 자바로 개발되었고, 데몬을 구동할 때 **JAR파일**을 수정하기 때문에 반드시 자바가 필요.
+* `spring` - `java project` 로 작성
+  * 하둡은 자바로 개발되었고, 데몬을 구동할 때 **JAR파일**을 수정하기 때문에 **반드시 자바가 필요**.
 
-![image-20200217155658827](images/image-20200217155658827.png)
+<img src="images/image-20200217155658827.png" alt="image-20200217155658827" style="zoom:67%;" />
 
 * add external library로 lib 추가
 
@@ -132,11 +148,11 @@ ko_KR.UTF-8
 
 ![image-20200217155819770](images/image-20200217155819770.png)
 
-![image-20200217155901146](images/image-20200217155901146.png)
+<img src="images/image-20200217155901146.png" alt="image-20200217155901146" style="zoom:50%;" />
 
-![image-20200217155930416](images/image-20200217155930416.png)
+<img src="images/image-20200217155930416.png" alt="image-20200217155930416" style="zoom:50%;" />
 
-![image-20200217155602518](images/image-20200217155602518.png)
+<img src="images/image-20200217155602518.png" alt="image-20200217155602518" style="zoom:150%;" />
 
 ![image-20200217165202730](images/image-20200217165202730.png)
 
