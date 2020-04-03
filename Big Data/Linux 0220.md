@@ -1,20 +1,84 @@
-**ROOT**계정으로 접속 - 실행은 꼭 **hadoop**
+:jack_o_lantern:**ROOT**계정으로 접속 - 실행은 꼭 **hadoop**
+
+## 클러스터 웹 인터페이스
+
+* 하둡은 HDFS의 기본적인 상태를 모니터링하고 HDFS 내에 저장된 파일을 조회할 수 있게 웹 인터페이스를 제공해준다. 
+* http://namenode:50070 으로 이동하면 웹 인터페이스에 접근 가능
+
+### - HDFS 입출력
+
+* 하둡은 HDFS 파일을 자바 애플리케이션에서 제어할 수 있게 자바 API를 제공해준다.
+
+```JAVA
+import org.apache.hadoop.fs.*;
+//로컬이나 hdfs 파일을 제어할 수 있다.
+```
+
+* HDFS 제어
+  * `Configuration` : 하둡 환경설정 파일에 접근하기 위한 클래스
+    * `core-default.xml` 과 `core-site.xml` 등에 정의된 값을 조회, 변경 가능
+  * `FileSystem` : 하둡에서 제공하는 파일 시스템을 추상화한 클래스
+    * 로컬파일 시스템이나 HDFS 제어 가능
+
+```JAVA
+Configuration conf = new Configuration();
+FileSystem hdfs = FileSystem.get(conf);
+//get메서드를 호출하여 파라미터로 설정한 Configuration 객체가 사용하는 HDFS 반환
+```
+
+* 경로 객체 생성 후, 해당경로가 HDFS에 이미 존재할 경우 삭제.
+
+```JAVA
+Path path = new Path(args[0]);
+if(hdfs.exists(path)){
+    hdfs.delete(path,true);
+}
+```
+
+* **FSDataOutputStream**
+  * 버퍼에 데이터를 출력, 데이터 검증을 위한 체크섬 파일 생성
+
+```java
+FSDataOutputStream outStream = hdfs.create(path);
+outStream.writeUTF(args[1]);//사용자가 입력한 내용 출력
+outStream.close();
+```
+
+* **FSDataInputStream**
+  * 파일을 조회하고, `readUTF`메서드를 호출해  파일의 내용을 문자열 변수에 저장한다.
+
+```java
+FSDataInputStream inputStream =hdfs.open(path);
+String inputString = inputStream.readUTF();
+inputStream.close();
+```
 
 
 
-## 맵리듀스
-
-하둡은 HDFS와 **맵리듀스**로 구성된다.
-
-> **맵리듀스**는 HDFS에 저장된 파일을 분산 배치 분석을 할 수 있게 도와주는 프레임워크
-
-데이터 분류 - 같은 것 끼리 모아서 취합해 집계 (중간저장소)
 
 
+## :star:맵리듀스
 
-mapper + reducer + driver 
+* 하둡은 **HDFS**와 **맵리듀스**로 구성된다.
 
-### Mapper
+* **맵리듀스**는 HDFS에 저장된 파일을 **분산 배치 분석**을 할 수 있게 도와주는 프레임워크
+* 데이터 분류 - 같은 것 끼리 모아서 취합해 집계 (중간저장소)
+
+* `mapper` + `reducer` + `driver` 로 구성된다
+
+![image-20200402175054486](images/image-20200402175054486.png)
+
+* **Map**은 입력 파일을 한 줄씩 읽어서 데이터를 **변형**
+* **리듀스**는 맵의 결과 데이터를 **집계**(aggregation)한다.
+
+```text
+맵 : (k1,v1) -> list(k2,v2)  
+리듀스 : (k2,list(v2)) -> (k3,list(v3))   
+```
+
+
+
+### 1. Mapper
 
 1. Mapper 클래스를 상속한다
 
@@ -52,7 +116,7 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritabl
 }
 ```
 
-## Reduce
+### 2. Reduce
 
 **Reducer**  데이터를 집계하는 역할
 
@@ -98,7 +162,7 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritabl
 
 
 
-### Driver
+### 3. Driver
 
 **맵리듀스를 실행하기 위한 일련의 작업을 처리하는 클래스**
 

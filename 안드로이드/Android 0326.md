@@ -1,6 +1,6 @@
 # 안드로이드 레이아웃
 
-#### - Market
+### - Market
 
 shift + shift 누를 시 검색 가능
 
@@ -8,12 +8,19 @@ shift + shift 누를 시 검색 가능
 
 ![image-20200326092530803](images/image-20200326092530803.png)
 
+### - 뷰의 영역
+
+<img src="images/image-20200402164613997.png" alt="image-20200402164613997" style="zoom:80%;" />
+
+
+
 ## 1. 상대 레이아웃
 
 * parent View나 다른 View와의 상대적인 위치 계산
 * 안에서 위치 값 계산을 위한 연산이 있기 때문에 성능 저하가 발생한다.
-
 * 부모 기준으로 가운데 이동
+
+<img src="images/image-20200402164426580.png" alt="image-20200402164426580" style="zoom:67%;" />
 
 ```xmlk
 android:layout_centerInParent="true"
@@ -30,6 +37,10 @@ android:layout_centerInParent="true"
 ![image-20200326094748247](images/image-20200326094748247.png)
 
 ## 2. 테이블 레이아웃
+
+* 격자(Grid) 모델
+
+<img src="images/image-20200402164520231.png" alt="image-20200402164520231" style="zoom:67%;" />
 
 > 표나 엑셀 시트와 같은 형태로 화면을 구성하도록 
 >
@@ -66,11 +77,14 @@ android:scaleType="matrix"
 
 ![image-20200326103621762](images/image-20200326103621762.png)
 
-#### 프레임 레이아웃
+## 4. 프레임 레이아웃
 
-> cf ) LinearLayout : 순서대로 배치되는 것.
->
-> FrameLayout : 겹쳐놨다가 보여주는 것 작업.
+* Single 모델
+* **가장 상위에 있는 하나의 뷰** OR 뷰 그룹만 보여주는 방법
+* 여러 개의 뷰가 들어가면 **중첩**하여 쌓이게 된다. 
+  * 가장 단순하지만 여러 개의 뷰를 중첩한 후 각 뷰를 전환하여 보여주는 방식이다. 
+
+*cf ) LinearLayout : 순서대로 배치되는 것.*
 
 ![image-20200326110857841](images/image-20200326110857841.png)
 
@@ -86,7 +100,7 @@ android:scaleType="matrix"
 
 ![image-20200326113450439](images/image-20200326113450439.png)
 
-## 4. 스크롤 뷰
+## 5. 스크롤 뷰
 
 * 자식이 딱 한개여야 한다.
 * 기본적으로 스크롤은 수직이다. 
@@ -107,7 +121,7 @@ android:scaleType="matrix"
 
 * 실행할 클래스 : 리스터
 
-## 이벤트
+## 6. 이벤트
 
 * **이벤트 소스** : 이벤트를 발생시킨 객체 (ex. 버튼) 
 * 소스코드에서 클릭 이벤트를 처리하도록 하려면 **SetOnClickListener()** 메소드 사용
