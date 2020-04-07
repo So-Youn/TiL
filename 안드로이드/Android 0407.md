@@ -15,23 +15,23 @@
 
   
 
-![image-20200407093411285](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200407093411285.png)
+![image-20200407093411285](images/image-20200407093411285.png)
 
 * package를 product별로 나누는 것이 아니라 성격 별로 나눈다고 생각하면 된다.
 
-![image-20200407093556182](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200407093556182.png)
+![image-20200407093556182](images/image-20200407093556182.png)
 
-![image-20200407093635306](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200407093635306.png)
+![image-20200407093635306](images/image-20200407093635306.png)
 
 * 클래스 이동
 
-<img src="C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200407093711394.png" alt="image-20200407093711394" style="zoom:50%;" />
+<img src="images/image-20200407093711394.png" alt="image-20200407093711394" style="zoom:50%;" />
 
-![image-20200407093814951](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200407093814951.png)
+![image-20200407093814951](images/image-20200407093814951.png)
 
 * 기능 별 package 구성
 
-<img src="C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200407094141793.png" alt="image-20200407094141793" style="zoom:67%;" />
+<img src="images/image-20200407094141793.png" alt="image-20200407094141793" style="zoom:67%;" />
 
 ![image-20200407094531618](images/image-20200407094531618.png)
 
