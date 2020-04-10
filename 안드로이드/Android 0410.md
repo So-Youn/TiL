@@ -1,8 +1,10 @@
+* 실행 오류는 - run에서
+
+* Log.d() - logcat에서 
+
 # [위임 권한](https://developer.android.com/guide/topics/permissions/overview?hl=ko) 부여하기
 
-실행 오류 - run
 
-log.d - logcat 
 
 ![image-20200410135033170](images/image-20200410135033170.png)
 
@@ -17,6 +19,8 @@ log.d - logcat
 
 ## 1. 일반 권한(normal)
 
+* 낮은 수준의 보안이다. 
+
 * 앱 설치 시 사용자에게 권한이 부여되어야 함을 알려주고 설치할 것인지를 물어본다.
 * 사용자가 수락하면 앱이 설치되고 앱에는 INTERNET권한 부여됨
 
@@ -28,6 +32,7 @@ log.d - logcat
   ![image-20200410101513396](images/image-20200410101513396.png)
 
 * 사용자 permission 사용
+  
   * 프로젝트 소스 코드에 위험권한을 부여해달라는 소스코드
 
 ![image-20200410102144572](images/image-20200410102144572.png)
@@ -40,7 +45,7 @@ log.d - logcat
 
 
 
-* Manifest에 작성하여 권한을 부여하는 것 : [**시스템 권한**](https://developer.android.com/guide/topics/security/permissions?hl=ko)
+* 위험 권한이 아니기 때문에 Manifest에 작성하여 권한을 부여하는 것 : [**시스템 권한**](https://developer.android.com/guide/topics/security/permissions?hl=ko)
 
 ## :man_mechanic:2. 위험 권한(Dangerous)
 
@@ -63,6 +68,7 @@ log.d - logcat
   * `requestCode` : 퍼미션 요청할 때 넘긴 요청 코드
   * `permissions` : 요청 퍼미션 목록
   * `grantResults` : 퍼미션 설정 성공 결과
+* `shouldShowRequestPermissionRationale()` : 왜 권한이 필요한지 나타내주는 함수
 
 ### 2. 처리 순서
 
@@ -78,7 +84,9 @@ log.d - logcat
 
 ### 1. Webview
 
-* Webview 권한 설정
+* `Webview` 권한 설정
+* `Webview`  : 앱에서 인터넷 사이트를 연결할 때 사용한다. 
+  * 안드로이드에서 web을 사용하기 위해서는 정보를 세밀하게 셋팅해주어야 한다.
 
 ![image-20200410104957195](images/image-20200410104957195.png)
 
@@ -102,6 +110,8 @@ log.d - logcat
 
 * 권한을 설정해주었을 때는 앱을 삭제해주고 실행해주어야 된다. 
 
+  * 기본권한은 바로  run시켜도 실행이 가능.
+  
   [결과]
 
 <img src="images/image-20200410110208854.png" alt="image-20200410110208854" style="zoom:50%;" />
@@ -160,8 +170,9 @@ log.d - logcat
 
 * 작업 방법 java.io 특성 그대로 사용 가능하다.
 * 외부저장소 접근 시, 다른 파일을 건드리지 않도록 권한체크를 해주어야 한다. 
-
 * 권한 설정
+  * 지금 버전에서는 write에서는 권한이 필요 없다. (READ시에만 필요.)
+  * 예전에는 READ, WRITE 둘 다 필요했다. 
   * 이전 버전 그대로 사용하겠다는 LegacyExternalStorage true해준다.
 
 ```xml
@@ -176,7 +187,7 @@ log.d - logcat
 
 
 
-*[실습]*
+*[실습 1]*
 
 *권한 체크는 액티비티*
 
@@ -194,4 +205,24 @@ log.d - logcat
 
 <img src="images/image-20200410152225513.png" alt="image-20200410152225513" style="zoom:67%;" />
 
+
+
+[실습 2]
+
 지금은 안드로이드 외부저장소에 파일을 저장하고 저장된 파일을 오픈하는 연습을 하는 시간입니다.
+
+![image-20200410235905085](images/image-20200410235905085.png)
+
+* 날짜 출력
+
+```java
+ Date date = new Date();
+    SimpleDateFormat nowDate = new SimpleDateFormat("yyyyMMDD");
+    String time = nowDate.format(date);
+```
+
+
+
+<img src="images/image-20200410235926995.png" alt="image-20200410235926995" style="zoom:50%;" />
+
+<img src="images/image-20200410235955705.png" alt="image-20200410235955705" style="zoom:50%;" />
