@@ -1,4 +1,4 @@
-# 설정정보
+# :star: 설정 정보
 
 * `SharedPreferences` : 설정 정보를 저장할 수 있도록 지원되는 객체 
 
@@ -31,7 +31,7 @@
 
 
 
-# DB Browser for SQLite
+# :imp: DB Browser for SQLite
 
 > 임베디드 데이터베이스로 개발된 경량급 관계형 데이터베이스
 >
@@ -46,9 +46,7 @@
 
 안드로이드 , ios 같이 사용할 수 있는 어플: 하이브리드
 
-
-
-### 헬퍼 클래스
+## 헬퍼 클래스
 
 * 앱 별로 한개씩 존재한다.
 * onCreate() : 앱이 설치되고 SQLiteOpenHelper가 최초로 호출될 때 한 번만 실행
@@ -106,27 +104,131 @@ public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
 ![image-20200411111253425](images/image-20200411111253425.png)
 
+### 1. 테이블 생성 
 
-
-
-
-* 테이블 생성 
-  * 기존의  database 지워줘야 생성 가능
+* 기존의  database 지워줘야 생성 가능
+  * 삽입 : `execSQL()` 
 
 ![image-20200411112220828](images/image-20200411112220828.png)
 
 
 
-
-
-
+* SQLite
 
 ![image-20200411113521625](images/image-20200411113521625.png)
 
-* 테이블 생성 가능 
-
-
-
 <img src="images/image-20200411113757775.png" alt="image-20200411113757775" style="zoom:50%;" />
 
-* 삽입 :exec
+### 2. Insert()
+
+* 컬럼에 저장할 값을 관리하는 `ContentValues` 를 이용
+  * Map 구조
+
+```java
+public void insert(View v){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id",id.getText().toString());
+        contentValues.put("name",name.getText().toString());
+        contentValues.put("age",age.getText().toString());
+    
+        db.insert("member",null,contentValues); 
+    }
+```
+
+### 3. SelectAll - 전체 조회
+
+* SQL문
+
+```sql
+select 컬럼명 from 테이블명 
+			 where 조건
+ 			 group by 컬럼명
+ 			 having 조건
+ 			 order by 컬럼명
+```
+
+* Java
+
+```java
+public android.database.Cursor query(String table,
+                                     String[] columns,
+                                     String selection,
+                                     String[] selectionArgs,
+                                     String groupBy,
+                                     String having,
+                                     String orderBy)
+
+
+1 - 테이블 명
+2 - 조회할 컬럼명 문자열 배열
+3 - 조건 (selection - where 다음에 오는 문자열 : where id = ?)
+4 - 조건으로 정의된 ?에 바인딩될 값을 배열로 넘긴다.
+5 - group by 절 뒤에 정의할 컬럼명
+6 -  having에 정의할 조건
+7 - order by 절에 정의할 정렬 기준
+```
+
+* Java 코드
+  * append를 이용해 출력
+
+![image-20200413214833658](images/image-20200413214833658.png)
+
+
+
+### 4. update()
+
+* `contenValues`는 `set`절 - 변경할 데이터의 **name**과 **value**
+  * id 값을 받아서 age값 변경
+
+```java
+    public void update(View v){
+      ContentValues contentValues = new ContentValues();
+        contentValues.put("age",age.getText().toString());
+        String where = "id like ?";
+        String[] whereVal = {"%"+id.getText().toString()+"%"};
+        db.update("member",contentValues,where,whereVal);
+    }
+```
+
+### 5. delete()
+
+* **delete**(String table,  String whereClause,  String[] whereArgs)
+
+```java
+  public void delete(View v){
+         db.delete("member","id=?",new String[]{id.getText().toString()});
+    }
+```
+
+
+
+## [실습]
+
+### DBHandler
+
+```java
+public class DBHandler {
+        // 자기 자신을 매개변수로
+        static DBHandler handler;
+        static ExamDBHelper helper;
+        Context context;
+        static SQLiteDatabase ExamDB;
+        //생성자
+        public DBHandler(Context context){
+                this.context = context;
+                helper = new ExamDBHelper(context);
+                ExamDB = helper.getWritableDatabase();
+            ...
+    }
+}
+```
+
+* db.query문
+
+```java
+//예시
+ Cursor cursor = ExamDB.query("product",
+                              new String[] "id","name","price"},
+                              null,null,null,null,null);
+```
+
