@@ -60,3 +60,9 @@
 * 라이브러리 확인하기 - library dependency
 
 ![image-20200414164801695](images/image-20200414164801695.png)
+
+![image-20200414165002471](images/image-20200414165002471.png)
+
+* app -Module
+
+![image-20200414165220731](images/image-20200414165220731.png)
