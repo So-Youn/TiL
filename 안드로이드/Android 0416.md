@@ -282,7 +282,17 @@ bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationVie
   
   * layout  - TabLayout 추가
   
-  ![image-20200416174717559](images/image-20200416174717559.png)
+  ![image-20200416175544713](images/image-20200416175544713.png)
+  
+  * TabList  추가
+  
+  ![image-20200416174854711](images/image-20200416174854711.png)
+  
+  * Tab과 문자열 연동
+  
+  ![image-20200416174915501](images/image-20200416174915501.png)
+  
+  <img src="images/image-20200416175526519.png" alt="image-20200416175526519" style="zoom:50%;" />
 
 ## HomeButton
 
