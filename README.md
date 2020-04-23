@@ -1,6 +1,6 @@
 # TIL
 
-## **:pencil:**빅데이터를 활용한 IoT 시스템 개발(feat.커넥티드카)
+## :pencil:빅데이터를 활용한 IoT 시스템 개발(feat.커넥티드카)
 
 
 
@@ -36,9 +36,10 @@
 
 * STS 연동한 Network 프로그래밍
 * STS 및 Android Thread처리
-* 
 
-### [Spring](./SPRING 정리)
+  
+
+### [Spring Framework](./SpringFramework)
 
 * STS 설치
 * Spring Framework의 특성
@@ -48,7 +49,7 @@
 * 라이브러리 적용법
 * RestFul API 사용법
 
-### [Web](./Web 정리)
+### [Web](./Web)
 
 * HTML5
 * CSS 및 부트스트랩
@@ -56,7 +57,7 @@
 * Servlet 사용법
 * JSP 사용법
 
-### :[Android](./안드로이드)
+### [Android](./안드로이드)
 
 * Intent 및 fragment 
 * selection 및 Adapter 실습
