@@ -29,10 +29,6 @@
 1. DBCP
 2. WAS
 
-![image-20200131092740964](C:\Users\sec\AppData\Roaming\Typora\typora-user-images\image-20200131092740964.png)
-
-
-
 ### WAS에서 제공하는 Connection Pool 이용하기
 
 > WAS마다 각각의 고유한 자원으로 Connection Pool을 만들고 관리한다. 자바에서 이를 사용하기 위해 표준 API인 `javax.sql.Datasource`를 이용

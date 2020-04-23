@@ -23,15 +23,15 @@ window : **graphical user interface** - gui
 ![image-20200423101658063](images/image-20200423101658063.png)
 
 > ls -al     
-
-(숨긴 파일까지 조회)
+>
+> * (숨긴 파일까지 조회)
 
 ![image-20200423101711794](images/image-20200423101711794.png)
 
 > git init
-
-* /.git 이라는 폴더 생성
-  * 하위 폴더에서 init 하는 실수는 절대 하지 않아야 한다.
+>
+> * /.git 이라는 폴더 생성
+>   * 하위 폴더에서 init 하는 실수는 절대 하지 않아야 한다.
 
 ![image-20200423102229935](images/image-20200423102229935.png)
 
@@ -40,16 +40,16 @@ window : **graphical user interface** - gui
 ![image-20200423102405966](images/image-20200423102405966.png)
 
 > touch a.txt
-
-* 파일 생성
+>
+> * 파일 생성
 
 ![image-20200423102446625](images/image-20200423102446625.png)
 
 ![image-20200423102529921](images/image-20200423102529921.png)
 
 > git rm --cached a.txt
-
-* 커밋 취소
+>
+> * 커밋 취소
 
 ![image-20200423103422718](images/image-20200423103422718.png)
 
@@ -59,8 +59,8 @@ window : **graphical user interface** - gui
   * 이것을 해주지않으면 git ignore가 먹히지 않는다.
 
 > git log
-
-* 커밋 내역 정리
+>
+> * 커밋 내역 정리
 
 ![image-20200423103757893](images/image-20200423103757893.png)
 
@@ -75,8 +75,8 @@ window : **graphical user interface** - gui
 ![image-20200423104146439](images/image-20200423104146439.png)
 
 > git restore --staged <file>...
-
-* add 취소 명령어
+>
+> * add 취소 명령어
 
 > git commit --ammend
 >
@@ -100,7 +100,19 @@ window : **graphical user interface** - gui
 
 ![image-20200423131037474](images/image-20200423131037474.png)
 
+> git config --global -l
+>
+> git config -l
+>
+> * 환경 설정 보기
 
+![image-20200423135310500](images/image-20200423135310500.png)
+
+> git config --global user.email
+>
+> * 유저 이름 바꾸기
+
+![image-20200423135446250](images/image-20200423135446250.png)
 
 ## 2. Git status를 통해 정리하기
 
