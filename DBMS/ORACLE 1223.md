@@ -215,9 +215,9 @@ myorder rename to orderinfo;
 
 ERD : 테이블 산출물
 
-![image-20191223213134978](images/image-20191223213134978.png)
+![image-20191223213134978](../images/image-20191223213134978.png)
 
-![image-20191223213249009](images/image-20191223213249009.png)
+![image-20191223213249009](../images/image-20191223213249009.png)
 
 
 ``` sql

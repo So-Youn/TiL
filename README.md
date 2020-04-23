@@ -26,10 +26,11 @@
 * Java OOP특성
 * Java Exception 처리
 
-### [JDBC](./JDBC 정리)
+### [DBMS](./DBMS)
 
 * Java와 Oracle의 연동
 * CRUD / CLRUD
+* ORACLE 기본 명령어
 
 ### [Network](./Network)
 

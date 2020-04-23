@@ -219,7 +219,7 @@ ROUND(125.888,-1)
                       1
   ```
 
-  ![TO CHAR _L](images/TO CHAR _L.PNG)
+  ![TO CHAR _L](../images/TO CHAR _L.PNG)
 
 * ```sql
   SQL> select ename, to_char(hiredate, 'MON')월,
@@ -418,11 +418,11 @@ SQL> alter session set nls_language = 'korean';
 
 * 샘플 계정인 hr계정의 lock을 풀어야 한다.
 
-![image-20191219153101151](images/image-20191219153101151.png)
+![image-20191219153101151](../images/image-20191219153101151.png)
 
 * 계정 접속
 
-  ![image-20191219153330693](images/image-20191219153330693.png)
+  ![image-20191219153330693](../images/image-20191219153330693.png)
 
   ㄴ
 
@@ -489,7 +489,7 @@ SQL> select job, count(empno) num
   "NUM": invalid identifier
 ```
 
-![image-20191219155451819](images/image-20191219155451819.png)
+![image-20191219155451819](../images/image-20191219155451819.png)
 
 ``` sql
 SQL> select to_char(hire_date,'mm') 월,count(employee_id) 입사자수
