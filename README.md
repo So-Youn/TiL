@@ -9,15 +9,17 @@ Git
 *  git 기초 문법
 * .gititgnore
 
-Big Data
+[Big Data](./Big Data)
 
 
 
 [Java](./JAVA)
 
+[알고리즘 스터디](./알고리즘)
 
-
-
+* 백준
+* 프로그래머스
+* SWEA
 
 
 
