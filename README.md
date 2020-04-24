@@ -71,32 +71,17 @@
 
 
 
-## **:pushpin:**참고 자료
+## :pushpin:참고 자료
 
-* 개발자 기술 면접
 
-https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/Development_common_sense
 
-* 주니어 개발자 채용정보
+| 제목                                            | 링크                                                         |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| 개발자 기술 면접                                | https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/Development_common_sense |
+| 주니어 개발자 채용정보                          | https://github.com/jojoldu/junior-recruit-scheduler          |
+| 원격 근무 회사                                  | https://github.com/jojoldu/junior-recruit-scheduler          |
+| 좋은 git commit 메시지를 위한 영어 사전         | https://blog.ull.im/engineering/2019/03/10/logs-on-git.html  |
+| 백엔드 개발자를 꿈꾸는 학생개발자에게           | https://d2.naver.com/news/3435170                            |
+| 좋은 git 커밋 메시지를 작성하기 위한 7가지 약속 | https://meetup.toast.com/posts/106                           |
+| emoji                                           | https://gitmoji.carloscuesta.me/                             |
 
-https://github.com/jojoldu/junior-recruit-scheduler
-
-* 원격 근무 회사
-
-https://github.com/jojoldu/junior-recruit-scheduler
-
-* 좋은 git commit 메시지를 위한 영어 사전
-
-https://blog.ull.im/engineering/2019/03/10/logs-on-git.html
-
-* 백엔드 개발자를 꿈꾸는 학생개발자에게
-
-https://d2.naver.com/news/3435170
-
-* 좋은 git 커밋 메시지를 작성하기 위한 7가지 약속
-
-https://meetup.toast.com/posts/106
-
-* emoji
-
-https://gitmoji.carloscuesta.me/

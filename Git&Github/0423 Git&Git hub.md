@@ -10,50 +10,50 @@ by 리누스 토르발즈
 
 window : **graphical user interface** - gui
 
-![image-20200423101603623](images/image-20200423101603623.png)
+![image-20200423101603623](../images/image-20200423101603623.png)
 
-<img src="images/image-20200423113008874.png" alt="image-20200423113008874" style="zoom:80%;" />
+<img src="../images/image-20200423113008874.png" alt="image-20200423113008874" style="zoom:80%;" />
 
 ## 1. 기초 명령어 실습
 
-<img src="images/image-20200423101513239.png" alt="image-20200423101513239" style="zoom:80%;" />
+<img src="../images/image-20200423101513239.png" alt="image-20200423101513239" style="zoom:80%;" />
 
 > ls
 
-![image-20200423101658063](images/image-20200423101658063.png)
+![image-20200423101658063](images/image-20200423101658063-1587695502272.png)
 
 > ls -al     
 >
 > * (숨긴 파일까지 조회)
 
-![image-20200423101711794](images/image-20200423101711794.png)
+![image-20200423101711794](../images/image-20200423101711794.png)
 
 > git init
 >
 > * /.git 이라는 폴더 생성
 >   * 하위 폴더에서 init 하는 실수는 절대 하지 않아야 한다.
 
-![image-20200423102229935](images/image-20200423102229935.png)
+![image-20200423102229935](../images/image-20200423102229935.png)
 
 > git status
 
-![image-20200423102405966](images/image-20200423102405966.png)
+![image-20200423102405966](../images/image-20200423102405966.png)
 
 > touch a.txt
 >
 > * 파일 생성
 
-![image-20200423102446625](images/image-20200423102446625.png)
+![image-20200423102446625](../images/image-20200423102446625.png)
 
-![image-20200423102529921](images/image-20200423102529921.png)
+![image-20200423102529921](../images/image-20200423102529921.png)
 
 > git rm --cached a.txt
 >
 > * 커밋 취소
 
-![image-20200423103422718](images/image-20200423103422718.png)
+![image-20200423103422718](../images/image-20200423103422718.png)
 
-![image-20200423113228216](images/image-20200423113228216.png)
+![image-20200423113228216](../images/image-20200423113228216.png)
 
 * 물리적으로 삭제되는 것이 아니라 커밋 내역에서만 삭제된다. 
   * 이것을 해주지않으면 git ignore가 먹히지 않는다.
@@ -62,17 +62,17 @@ window : **graphical user interface** - gui
 >
 > * 커밋 내역 정리
 
-![image-20200423103757893](images/image-20200423103757893.png)
+![image-20200423103757893](../images/image-20200423103757893.png)
 
 * 한 줄로 보기
 
-![image-20200423103834228](images/image-20200423103834228.png)
+![image-20200423103834228](../images/image-20200423103834228.png)
 
 > git status
 
-![image-20200423103851773](images/image-20200423103851773.png)
+![image-20200423103851773](../images/image-20200423103851773.png)
 
-![image-20200423104146439](images/image-20200423104146439.png)
+![image-20200423104146439](../images/image-20200423104146439.png)
 
 > git restore --staged <file>...
 >
@@ -82,23 +82,23 @@ window : **graphical user interface** - gui
 >
 > >  esc i  :wq
 
-![image-20200423104904500](images/image-20200423104904500.png)
+![image-20200423104904500](../images/image-20200423104904500.png)
 
-![image-20200423105106798](images/image-20200423105106798.png)
+![image-20200423105106798](../images/image-20200423105106798.png)
 
 > git restore <file>
 
-![image-20200423112712695](images/image-20200423112712695.png)
+![image-20200423112712695](../images/image-20200423112712695.png)
 
 > git ignore
 
-![image-20200423114323302](images/image-20200423114323302.png)
+![image-20200423114323302](../images/image-20200423114323302.png)
 
 > git remote -v
 >
 > * 원격 저장소 조회
 
-![image-20200423131037474](images/image-20200423131037474.png)
+![image-20200423131037474](../images/image-20200423131037474.png)
 
 > git config --global -l
 >
@@ -106,13 +106,13 @@ window : **graphical user interface** - gui
 >
 > * 환경 설정 보기
 
-![image-20200423135310500](images/image-20200423135310500.png)
+![image-20200423135310500](../images/image-20200423135310500.png)
 
 > git config --global user.email
 >
 > * 유저 이름 바꾸기
 
-![image-20200423135446250](images/image-20200423135446250.png)
+![image-20200423135446250](../images/image-20200423135446250.png)
 
 ## 2. Git status를 통해 정리하기
 
@@ -304,9 +304,9 @@ Untracked files:
 
  
 
-<img src="images/image-20200423114022862.png" alt="image-20200423114022862" style="zoom:80%;" />
+<img src="../images/image-20200423114022862.png" alt="image-20200423114022862" style="zoom:80%;" />
 
-<img src="images/image-20200423114104559.png" alt="image-20200423114104559" style="zoom:67%;" />
+<img src="../images/image-20200423114104559.png" alt="image-20200423114104559" style="zoom:67%;" />
 
 * git ignore : 
   * 이미 한번 tracking 이 되면 ignore가 먹히지 않는다.
@@ -334,6 +334,17 @@ $ git remote add origin {URL}
 git remote -v
 # 원격 저장소 설정 삭제
 git remove rm {원격저장소 이름}
+```
+
+#### 9. 원격 저장소와 통신 
+
+```bash
+$ git log --oneline
+# commit 상태 보기
+$ git pull origin master
+
+$ git push origin master
+:wq
 ```
 
 
