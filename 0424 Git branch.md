@@ -4,7 +4,7 @@
 
 * 동시 작업 시 독립적인 작업흐름을 위함.
 
-  ![image-20200424101248741](../images/image-20200424101248741.png)
+  ![image-20200424101248741](images/image-20200424101248741.png)
 
   ```bash
   $ git checkout feature/menu
@@ -16,9 +16,9 @@
   Switched to branch 'master'
   ```
 
-  ![image-20200424101659061](../images/image-20200424101659061.png)
+  ![image-20200424101659061](images/image-20200424101659061.png)
 
-  ![image-20200424101803519](../images/image-20200424101803519.png)
+  ![image-20200424101803519](images/image-20200424101803519.png)
 
   * `git log` 시 이력이 다를 뿐 파일이 사라지는 것이 아니다. 
   * branch는 병합이 되면 가지가 끊기기 때문에 병합이 완료된 브랜치는 삭제한다.
@@ -186,7 +186,7 @@
 
    
 
-   ![image-20200424104448313](../images/image-20200424104448313.png)
+   ![image-20200424104448313](images/image-20200424104448313.png)
 
    ```bash
    
@@ -246,7 +246,7 @@
    $ git log --oneline --graph
    ```
 
-   ![image-20200424105916670](../images/image-20200424105916670.png)
+   ![image-20200424105916670](images/image-20200424105916670.png)
 
 8. branch 삭제
 
@@ -350,7 +350,7 @@
    
    * visual code에서 해결해주어도 된다.
    
-   ![image-20200424111345741](../images/image-20200424111345741.png)
+   ![image-20200424111345741](images/image-20200424111345741.png)
 
 
 8. merge commit 진행
@@ -361,7 +361,7 @@
 
    * vim 편집기 화면이 나타납니다.
    
-   ![image-20200424111620688](../images/image-20200424111620688.png)
+   ![image-20200424111620688](images/image-20200424111620688.png)
    
    * 자동으로 작성된 커밋 메시지를 확인하고, `esc`를 누른 후 `:wq`를 입력하여 저장 및 종료를 합니다.
       * `w` : write
@@ -377,31 +377,9 @@
    
 9. 그래프 확인하기
 
-    ![image-20200424111701878](../images/image-20200424111701878.png)
+    ![image-20200424111701878](images/image-20200424111701878.png)
 
 
 10. branch 삭제
 
-
-
-
-* 현재 작업하던 폴더에 git clone 할 시
-
-> git clone https://github.com/So-Youn/TiL.git `.`
-
-![image-20200424141756727](images/image-20200424141756727.png)
-
-![image-20200424141919827](images/image-20200424141919827.png)
-
-
-
-
-
-# 비교
-
-| Git hub(Master) | branch(PR)     | Fork +PR       |
-| --------------- | -------------- | -------------- |
-| collaborator O  | collaborator O | collaborator X |
-
-
-
+    
