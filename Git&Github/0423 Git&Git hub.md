@@ -4,17 +4,25 @@
 
 by 리누스 토르발즈
 
-
+* 항상 모든 명령어 뒤에 상태를 확인하는 `git status` 명령어 사용
 
 > git status
 
-window : **graphical user interface** - gui
+* window 창 ?
+
+  * **graphical user interface** - gui
+
+* GIt  flow : Git을 활용하여 협업하는 흐름으로 Branch 활용
+
+  <img src="images/image-20200428234631996.png" alt="image-20200428234631996" style="zoom:80%;" />
 
 ![image-20200423101603623](../images/image-20200423101603623.png)
 
 <img src="../images/image-20200423113008874.png" alt="image-20200423113008874" style="zoom:80%;" />
 
 ## 1. 기초 명령어 실습
+
+* `master ` : 배포 가능한 상태의 코드
 
 <img src="../images/image-20200423101513239.png" alt="image-20200423101513239" style="zoom:80%;" />
 
