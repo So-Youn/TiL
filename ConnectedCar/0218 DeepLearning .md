@@ -18,7 +18,7 @@
 
 #### 딥러닝 기반 차량 번호 인식?
 
-* **ITS* $ Parking customers**
+* **ITS - Parking customers**
 * 기존 영상 기법의 한계 극복
   * 30% of camera images ; 조명, 카메라의 방향에 따라 읽어내지 못함
   * Failed on existing tech 
@@ -81,7 +81,8 @@ https://paperswithcode.com/
 
 * 트리 모델을 객체 공간 그래프로 변환
 
-  ![image-20200218143640108](images/image-20200218143640108.png)
+  ![image-20200218143640108](../images/image-20200218143640108.png)
+
   * 데이터를 모델에 맞춰서 1차식으로 표현
 
 * 선형 판별 함수
@@ -91,7 +92,7 @@ https://paperswithcode.com/
   * 가중치(weigth) - 가중치의 합 = **기울기** 
   * f(x) = w0+w1x1+w2x2+...
 
-![image-20200218152515488](images/image-20200218152515488.png)
+![image-20200218152515488](../images/image-20200218152515488.png)
 
 * 기울기 업데이트 하는 방법이 가지고 있는 문제점은?
 
@@ -104,7 +105,7 @@ https://paperswithcode.com/
     * 로지스틱 회귀분석
     * SVM
 
-    ![image-20200218154226893](images/image-20200218154226893.png)
+    ![image-20200218154226893](../images/image-20200218154226893.png)
 
   * **F(X) = 0 ?** 선위에 있는 값
 
@@ -120,7 +121,7 @@ https://paperswithcode.com/
 
  퍼셉트론은 **원시적 신경망**이지만, 딥러닝을 포함한 현대 신경망은 퍼셉 트론을 병렬과 순차 구조로 결합하여 만듬
 
-![image-20200218172725394](images/image-20200218172725394.png)
+![image-20200218172725394](../images/image-20200218172725394.png)
 
 [진행 순서]
 
@@ -135,17 +136,17 @@ https://paperswithcode.com/
 
   * hidden Layer가 많아지면 가중치(w)가 많아져 성능이 좋아져야한다. 
 
-    ![img](images/22293C50579F7BBF13.png)
+    ![img](../images/22293C50579F7BBF13.png)
 
-![image-20200218172601418](images/image-20200218172601418.png)
+![image-20200218172601418](../images/image-20200218172601418.png)
 
 * 미분 : 상대적인 변화량
 
   미분을 통해 가중치를 구할 수 있다.
 
-![image-20200218173728400](images/image-20200218173728400.png)
+![image-20200218173728400](../images/image-20200218173728400.png)
 
 https://www.udemy.com/ko/courses/development/
 
-![image-20200218122736206](images/image-20200218122736206.png)
+![image-20200218122736206](../images/image-20200218122736206.png)
 
