@@ -1,4 +1,4 @@
-## Led
+## Led 조작
 
 변수 선언 시 센서 커넥터 이름(PIN number) 그대로 정의
 
@@ -60,15 +60,29 @@ void loop() {
 
 ## Can 과 장비의 Serial 통신
 
-* 라떼판다와 아두이노 사이의 시리얼 통신
-  * 
+> App -> was (server) 요청 -> Pad 
+>
+> 		* Iot - can 사이의 serial 통신
+> 		* 나머지는 tcp 통신
 
+![image-20200513094102431](images/image-20200513094102431.png)
+
+* 차량 내부 통신 : 시리얼 통신
+
+* 차량 외부와 통신 : tcp 통신
+
+
+
+* 라떼판다와 아두이노 사이의 시리얼 통신
 * 아두이노와 can 사이의 통신
   * led on /led off
+* 라즈베리 파이에 Os 설치 - 서버 제작 
+  * 몽고디비에 데이터 저장
+  * Ajax 이용해서 실시간 데이터 호출 (ex 계기판)
 
-* [rxtx](http://rxtx.qbang.org/wiki/index.php/Download) 
+### 라이브러리 추가
 
-
+* [rxtx](http://rxtx.qbang.org/wiki/index.php/Download) 다운로드
 
 ![image-20200512165027601](images/image-20200512165027601.png)
 
@@ -77,13 +91,6 @@ void loop() {
 ![image-20200512165338290](images/image-20200512165338290.png)
 
 ```c
-package basic;
-
-import gnu.io.CommPort;
-import gnu.io.CommPortIdentifier;
-import gnu.io.NoSuchPortException;
-import gnu.io.PortInUseException;
-
 public class SerialConnectionTest {
 	public SerialConnectionTest(){
 		
@@ -108,14 +115,70 @@ public class SerialConnectionTest {
 		} catch (PortInUseException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	public static void main(String[] args) {
 		new SerialConnectionTest().connect("COM10");
 	}
-
 }
-
 ```
 
 ![image-20200512180455977](images/image-20200512180455977.png)
+
+
+
+
+
+* 환경 설정 (언어)
+
+![image-20200513102730079](images/image-20200513102730079.png)
+
+
+
+
+
+## 시리얼 통신
+
+1. `CommportIdentifier`를 포트의 유효성과 통신 가능상태인지 점검
+
+2. `CommportIdentifier`의 open 메소드를 이용해서 시리얼 통신을 할 수 있는 준비상태로 셋팅
+
+   - 시리얼 통신을 하기 위해 필요한 포트객체가 리턴
+
+3. `CommPort`는 종류가 2가지
+
+   * Serial
+   * Parallel
+
+   * **Can통신** : Serial 통신, 아두이노와 라떼판다도 Serial 통신
+     * 각 상황에 맞는 `CommPort` 객체를 얻어야 작업할 수 있다.
+
+4. `Commport`를 `SerialPort `로 casting
+
+5. `SerialPort` 객체의 `setSerialPortParams` 메소드를 이용해서 Serial통신을 위한 기본 내용을 설정
+
+   * Serial포트를 open하고 설정을 잡아놓은 상태
+   * 전달되는 데이터를(data frame) 받을 수 있는 상태
+
+   ```java
+   serialPort.setSerialPortParams(9600, //시리얼 포트의 속도(9600baud)
+   					SerialPort.DATABITS_8, ///전송하는 데이터의 길이
+                       SerialPort.STOPBITS_1, //STOP BIT 설정
+                       SerialPort.PARITY_NONE); ///PARITY비트를 사용하지 않겠다고 설정
+   												---------오류 식별자
+   ```
+
+6. 데이터를 주고받을 수 있도록 SerialPort객체에서 Input/Output스트림을 얻는 작업
+
+   * **byte**단위(io클래스 관점)로 데이터가 송수신되므로 `Reader`, `Writer` 계열의 스트림을 사용할 수 없고
+
+     inputStream, OutputSream객체를 사용해야 한다. 
+
+   * `시리얼포트객체.getInputStream()`
+
+     `시리얼포트객체.getOutputStream()`
+
+7. 데이터 수신과 송신에 대한 처리
+
+   1) 쓰레드로 처리
+
+   2) 이벤트에 반응하도록 처리
