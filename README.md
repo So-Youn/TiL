@@ -8,12 +8,12 @@
 
 ##  :bulb: 목차
 
-**Git**
+### **Git**
 
 *  git 기초 문법
 * .gititgnore
 
-### [Big Data](./Big Data)
+### Big Data
 
 * MongoDB 사용법
 * 데이터 분석 R
@@ -69,7 +69,7 @@
 * 백준
 * 책 정리
 
-
+## Can 통신
 
 ## :pushpin:참고 자료
 
