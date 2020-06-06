@@ -37,8 +37,31 @@ else :
 
 ```python
 # my_str.py
-my_str = "Life is too short, you need pyhton"
-# 아래에 코드를 작성하세요.
+# 다음 문장의 모음을 제거하여 출력하세요.
+my_str = "Life is too short, you need python"
+for char in my_str:
+    print(char)
+
+#print(my_str[0]) # 문자열 index로 접근 가능
+
+new_str = my_str.split(',') # space bar를 기준으로 단어 자르기
+print(new_str)
+# print(new_str[0][0])
+
+print(my_str.find('a')) # 문자열이 없으면 -1이 뜸
+print(my_str.index('a')) # 문자열이 없으면 아예 오류 발생
+
+
+new_str = my_str.replace('Life','Time')
+#print(new_str)
+
+vowels = ['a','e','i','o','u']
+for char in vowels:
+    if char in my_str:
+        my_str = my_str.replace(char,'')
+        #print(list(my_str).sort()) - None 반환 - ? return 해주기
+
+print(my_str)
 ```
 
 
@@ -49,10 +72,21 @@ my_str = "Life is too short, you need pyhton"
 
 ```python
 # fruit.py
+
 basket_items = {'apples': 4, 'oranges': 19, 'kites': 3, 'sandwiches': 8}
 
 fruits = ['apples', 'oranges', 'pears', 'peaches', 'grapes', 'bananas']
-# 아래에 코드를 작성하세요.
+
+fruit_count = 0
+not_fruit_count = 0
+
+for key,val in basket_items.items(): # key, value 모두 가져올 수 있도록
+    # print(key, val)
+    if key in fruits : # key값이 fruits 안에 들어있는 지 확인
+        fruit_count += val
+    else :
+        not_fruit_count += val
+print(f'과일의 갯수는 {fruit_count}개, 과일이 아닌 것은 {not_fruit_count}개 있습니다.')
 ```
 
 
@@ -65,7 +99,12 @@ fruits = ['apples', 'oranges', 'pears', 'peaches', 'grapes', 'bananas']
 # boards.py
 import requests
 url = 'https://jsonplaceholder.typicode.com/posts'
-# 아래에 코드를 작성하시오.
+
+response = requests.get(url).json()
+mask_info={}
+for data in response:
+    if data['userId'] == 4:
+       print(data['title'])
 ```
 
 
@@ -93,6 +132,14 @@ snail(100, 5, 2)
 
 ```python
 # snail.py
-# 아래에 코드를 작성하시오.
+def snail(height,day,night):
+    count = 0
+    while True :
+        count += 1
+        height -= day
+        if height <=0 :
+            return count
+        height +=night
+print(snail(100,5,2))
 ```
 
