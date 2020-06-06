@@ -310,67 +310,51 @@ for num in range(10):
 # 0 1 2 3 4 5 6 7 8 9
 ```
 
-
-
-
-
-
-```python
-
-
-# 2 - 1 . list for
-number = [10,9,8,7,6,5,4,3,2,1,0]
-for num in number :
-    print(num)
-
-number = ['삼성', '역삼','선릉', '영등포']
-for num in number :
-    print(num)
-
-# 2 - 2. idx로 접근
-for i in range(len(number)):
-    print(i)
-    print(number[i])
-# 2 - 3 enumerate
-for idx, i in enumerate(number):
-    print(idx, i)
-```
-
 ### random
 
 ```python
-print(dir(random)) # random이 가지고 있는 기능 
-
-$ python lotto.py
-['BPF', 'LOG4', 'NV_MAGICCONST', 'RECIP_BPF', 'Random', 'SG_MAGICCONST', 'SystemRandom', 'TWOPI', '_BuiltinMethodType', '_MethodType', '_Sequence', '_Set', '__all__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '_acos', '_bisect', '_ceil', '_cos', '_e', '_exp', '_inst', '_itertools', '_log', '_os', '_pi', '_random', '_sha512', '_sin', '_sqrt', '_test', '_test_generator', '_urandom', '_warn', 'betavariate', 'choice', 'choices', 'expovariate', 'gammavariate', 'gauss', 'getrandbits', 'getstate', 'lognormvariate', 'normalvariate', 'paretovariate', 'randint', 'random', 'randrange', 'sample', 'seed', 'setstate', 'shuffle', 'triangular', 'uniform', 'vonmisesvariate', 'weibullvariate']
+print(dir(random)) # random이 가지고 있는 기능 확인
 ```
 
-* 
 * 로또 API 를 이용해서 당첨 확인하기
 
 >  API : https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=1
 
-* 파이썬 알고리즘 확인 사이트
+![image-20200606153918901](images/image-20200606153918901.png)
 
-> [python tutor](http://www.pythontutor.com/visualize.html#mode=edit)
 
-* [json viewer](https://chrome.google.com/webstore/search/json)
 
-![image-20200605151910413](images/image-20200605151910413.png)
+*ex ] 로또 번호 추첨 5번을 한번에 반복해서 출력하기*
 
-* [pip request](https://pypi.org/project/requests/) 
+```python
+import random 
+for i in range(5):
+print(sorted(random.sample(range(1,46),6)))
+```
 
-![image-20200605152157410](images/image-20200605152157410.png)
+* 반복문을 한 줄로 쓸 때 - **컴프리핸션**
 
-```bash
-$ pip install requests
+```python
+lotto = [sorted(random.sample(range(1,46),6)) for i in range(5)]
+print(lotto) 
 ```
 
 
 
+*ex ] 음식점 이름, 전화번호 dictionary 로 표현 후, 그 중에서 무작위 음식점 하나 뽑아서 출력하기*  
 
+```python
+food = {
+    '엽떡' : '010-1234-5678',
+    '반장떡볶이' : '010-1004-1008',
+    '신전떡볶이' : '031-546-8575'
+}
+pick = random.choice(list(food.keys()))
+print(pick)
+print('가게이름은?', pick)
+print('전화번호는?',food[pick])
 
+# f- string 
+print(f'가게이름은 {pick}, 전화번호는{food[pick]}')
 
-
-* 공적 마스크 리스트 속 dictionary
-
+```
