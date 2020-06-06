@@ -6,7 +6,7 @@
 
 [파이썬 설치]( https://www.python.org/downloads/) [VSCode설치](https://code.visualstudio.com/docs/?dv=win)
 
-![image-20200605102418939](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200605102418939.png)
+![image-20200605102418939](images/image-20200605102418939.png)
 
 * 파이썬
 
@@ -14,13 +14,13 @@
 
   > C:\Users\student\AppData\Local\Programs\Python\Python37
 
-![image-20200605104043111](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200605104043111.png)
+![image-20200605104043111](images/image-20200605104043111.png)
 
-![image-20200605104122188](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200605104122188.png)
+![image-20200605104122188](images/image-20200605104122188.png)
 
 * 설치됐는 지 확인
 
-![image-20200605103940008](C:\Users\student\AppData\Roaming\Typora\typora-user-images\image-20200605103940008.png)
+![image-20200605103940008](images/image-20200605103940008.png)
 
 * VSCode
 
@@ -143,14 +143,138 @@ else:
   print("5이하")
 ```
 
+![image-20200606131034645](images/image-20200606131034645.png)
+
 ### 3. 반복
 
+#### 1. while
+
+```python
+n=0
+while n < 3 :
+    n +=1
+    print(n) 
+print(n)   # 1 2 3 3
+```
+
+
+
+#### 2. for
+
+```python
+# 0 1 2 3 4 5 6 7 8 9
+for num in range(10):
+    print(num)
+```
+
+* list for
+
+```python
+number = [10,9,8,7,6,5,4,3,2,1,0]
+for num in number :
+    print(num)
+```
+
+```python
+number = ['삼성', '역삼','선릉', '영등포']
+for num in number :
+    print(num)
+```
+
+* `index`로 접근
+  * `len()` : size
+
+```python
+for i in range(len(number)):
+    print(i)
+    print(number[i])
+# 0 
+# 삼성
+# 1
+# 역삼
+# 2
+# 선릉
+# 3
+# 영등포
+```
+
+* enumerate
+
+```python
+for idx, i in enumerate(number):
+  print(idx, i)
+# 0 삼성
+# 1 역삼
+# 2 선릉
+# 3 영등포
+```
+
+##### # for dict
+
+```python
+mask = {
+    '삼성' : 100,
+    '역삼' : '50개',
+    '선릉' : True
+}
+for i in mask :
+    print(i)
+# 삼성
+# 역삼
+# 선릉
+```
+
+* dict임을 표현하는 for 문
+
+  *  동작은 위와 동일
+  * mask.keys()
+
+  ```python
+  for i in mask.keys() :
+      print(i)
+      print(mask[i])
+  # 삼성
+  # 100
+  # 역삼
+  # 50개
+  # 선릉
+  # True
+  ```
+
+  * mask.values()
+
+  ```python
+  for i in mask.values():
+      print(i)
+  # 100
+  # 50개
+  # True
+  ```
+
+  ```python
+  for key, val in mask.items():
+       print(key)
+       print(val)
+       print(mask[key])
+  ```
+
+  ```python
+  for idx, i in enumerate(mask,3) :
+      print(idx, i)
+  # 3 삼성
+  # 4 역삼
+  # 5 선릉
+  ```
+
+  
 
 
 
 
 
-##  [내장함수](https://docs.python.org/ko/3/library/functions.html)
+
+
+##  3. [내장함수](https://docs.python.org/ko/3/library/functions.html)
 
 ![image-20200605113942657](images/image-20200605113942657.png)
 
@@ -172,12 +296,12 @@ number = int(input())
 * `range`(*start*, *stop*[, *step*])
 
 ```python
-number = list(range(10))   # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(number)
-number1 = list(range(3,10))   # [3, 4, 5, 6, 7, 8, 9]
-print(number1)
-number2 = list(range(3,10,3))  # [3, 6, 9]
-print(number2)
+number = list(range(10))   
+print(number)   # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+number1 = list(range(3,10))   
+print(number1)   # [3, 4, 5, 6, 7, 8, 9]
+number2 = list(range(3,10,3))  
+print(number2)   # [3, 6, 9]
 ```
 
 ```python
