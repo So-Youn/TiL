@@ -280,16 +280,29 @@ for i in mask :
 
 ### 1. input()
 
->  입력 함수
+>  사용자 입력 함수
 >
-> * default가 string
+> * **return** 값이 무조건  **string**
 >   *  int형은 형변환 해주어야 한다.
 
 ```python
 number = int(input())
 ```
 
+```python
+string = input("입력하세요>") 
+# input의 리턴값이 string에 저장됨.
+```
 
+#### :star: cast
+
+* `ValueError`  ? : 변환할 수 없는 것을 변환하려 할 때 발생하는 에러
+  * 숫자가 아닌 것을 숫자로 변환하려 할 때
+  * 소수점이 있는 숫자 형식의 문자열을 `int()` 로 변환하려 할 때
+  
+* 숫자 문자열로 바꾸기 : `str()`
+
+  
 
 ### 2. range
 
@@ -321,6 +334,14 @@ print(dir(random)) # random이 가지고 있는 기능 확인
 >  API : https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=1
 
 ![image-20200606153918901](images/image-20200606153918901.png)
+
+
+
+
+
+
+
+
 
 
 
