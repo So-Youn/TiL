@@ -197,18 +197,28 @@ $django-admin startproject <프로젝트명>
 
 4. 프로젝트 생성 시 제공되는 파일
 
+   * `admin.py` 
+
    * **manage.py** : 전체 django와 관련된 모든 명령어를 `manage.py`를 통해 실행한다.
 
    * `__init.py__` : 현재 `__init__.py` 파일이 존재하는 폴더를 하나의 프로젝트, 혹은 패키지로 인식하게 해주는 파일.
 
+     * 실수로 지워지면 프로젝트 새로 파기...
+
    * **settings.py** : 현재 프로젝트의 전체적인 설정 및 관리를 위해 존재하는 파일.
 
+   * pages 생성
+
+     ![image-20200610104206402](images/image-20200610104206402.png)
+
+     * settings에 추가
+   
      <img src="images/image-20200609163824288.png" alt="image-20200609163824288" style="zoom:80%;" />
-
+   
      <img src="images/image-20200609163910378.png" alt="image-20200609163910378" style="zoom:80%;" />
-
+   
    * **urls.py** : 내 프로젝트에 접근할 수 있는 경로를 설정하기 위한 파일
-
+   
      <img src="images/image-20200609163057350.png" alt="image-20200609163057350" style="zoom:80%;" />
-
+   
    
