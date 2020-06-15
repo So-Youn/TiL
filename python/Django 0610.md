@@ -7,12 +7,16 @@
 ## 1. URL
 
 > URL mapper는 요청 URL을 기준으로 HTTP 요청을 적절한 view로 보내주기 위해 사용
+>
+> *  `urlpatterns` 객체는 `path()` 및  `re_path()` 함수의 리스트
+> * 
 
 * 경로 설정 ( **urls.py** )
 
   * `path` 함수 안에 숫자, 문자열로 경로 주소 설정
   * 함수 뒤에 `()` 붙이지 않은 이유는 호출이 아닌, 그저 값을 넘겨주는 것이기 때문
-
+* `views.index` :  함수가 `index()` 
+  
   ```python
   from django.contrib import admin
   from django.urls import path
@@ -24,7 +28,7 @@
   ]
   ```
 
-
+ 
 
 ### 경로 컨버터
 
@@ -48,6 +52,7 @@
   <img src="images/image-20200610093630082.png" alt="image-20200610093630082" style="zoom:80%;" />
 
   * **Dictionary** 형태 (key, value)로 값을 넘겨준다.
+  *  `HttpRequest` 객체를 (`request`)의 인자로 받고 `HttpResponse` 객체를 반환
   
 
 ```python
@@ -165,6 +170,7 @@ my_list = ['짜장면','차돌짬뽕','탕수육','콩국수']
 ```
 
 * is empty?
+  * `empty` 를 통해 값이 비어있는 경우에 대한 예외처리를 해줄 수 있다.
 
 ```python
 empty_list = []
@@ -179,6 +185,7 @@ empty_list = []
 ```
 
 * 조건문
+  * 변수는 `{{}}` 사용
 
 ```html
 {% for food in my_list %}
