@@ -14,7 +14,7 @@
 
 ![image-20200616212354563](images/image-20200616212354563.png)
 
-<img src="C:\Users\sec\AppData\Roaming\Typora\typora-user-images\image-20200616211638146.png" alt="image-20200616211638146" style="zoom:80%;" />
+<img src="images/image-20200616211638146.png" alt="image-20200616211638146" style="zoom:80%;" />
 
 * 0~ n까지의 합 구하기
 
@@ -61,5 +61,8 @@
 
 <img src="images/image-20200616215529780.png" alt="image-20200616215529780" style="zoom:80%;" />
 
+* 문자열 뒤집어 프린트
 
+![image-20200616220006022](images/image-20200616220006022.png)
 
+![image-20200616215951115](images/image-20200616215951115.png)
