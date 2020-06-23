@@ -54,6 +54,7 @@ $ python manage.py startapp articles
 ## 2. Page 생성
 
 * **index pages**
+  
   * `/index/` : 전체 게시글 목록을 보여 줄 페이지
 * **create pages**
   * form 태그가 들어있는 사용자가 직접 입력하는 페이지
