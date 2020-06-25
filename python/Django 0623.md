@@ -38,9 +38,11 @@ request안에 User에 대한 정보가 들어있다.
 
 
 
-            AuthenticationForm은 ModelForm이 아닌 Form 상속
-            # 별도로 정의된 Model이 없다는 뜻
-            # 그래서 넘겨주는 인자가 달라진다.
+```markdown
+        AuthenticationForm은 ModelForm이 아닌 Form 상속
+        # 별도로 정의된 Model이 없다는 뜻
+        # 그래서 넘겨주는 인자가 달라진다.
+```
 
 
 ### :star: LOGIN
