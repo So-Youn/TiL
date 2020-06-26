@@ -8,7 +8,7 @@
 
 DB 있는 지 확인하기
 
-<img src="C:\Users\sec\AppData\Roaming\Typora\typora-user-images\image-20200625092354086.png" alt="image-20200625092354086" style="zoom:80%;" />
+<img src="images/image-20200625092354086.png" alt="image-20200625092354086" style="zoom:80%;" />
 
 # 1:N 관계
 
@@ -261,4 +261,49 @@ def like(request, article_pk):
 
 * 모델 정의할 때는 문자열 - 설계도 작성 - 테이블 작성
 
-  
+
+## 친구 추가 구현
+
+* models.py
+
+  ```python
+  # Usercustomizing
+  class User(AbstractUser):
+      followers = models.ManyToManyField(
+          settings.AUTH_USER_MODEL,
+          related_name="followings",
+          blank=True,
+      )
+  ```
+
+  ![image-20200626100936050](images/image-20200626100936050.png)
+
+* views.py
+
+  ```python
+  @login_required
+  def follow(request, user_pk ):
+      person = get_object_or_404(get_user_model(), pk=user_pk)
+      user = request.user
+      # 원래 person에 담긴 user_pk값을 가진 유저는 프로필의 주인이다.
+      # request.user는 나, 요청을 보내온 사용자이다.
+      if user in person.followers.all():
+          person.followers.remove(user)        
+      else:
+          person.followers.add(user)     
+      return redirect('accounts:profile', person.username)
+  ```
+
+* 뷰
+
+  ```html
+  {% if user != person %}
+    {% if user in person.followers.all %}
+    <a href="{% url 'accounts:follow' person.pk %}"><i class="fas fa-user-plus"> follow </i></a>  
+    {% else %}
+    <a href="{% url 'accounts:follow' person.pk %}"><i class="fas fa-handshake-slash"> cancel </i> </a> 
+    {% endif %}
+  {% endif %}
+  ```
+
+  <img src="images/image-20200626105006945.png" alt="image-20200626105006945" style="zoom:80%;" />
