@@ -134,6 +134,7 @@ colors.forEach(function(color) {
   
 
   * `event.preventDefault()` : event의 전파를 막고 event를 취소한다. 
+  * checkbox가 작동 안함을 확인할 수 있다.
 
   [예시]
 
@@ -187,7 +188,26 @@ colors.forEach(function(color) {
 
 
 
-## 5. arrow function
+## 5. :heavy_check_mark: arrow function
+
+* :heavy_check_mark: function 키워드 대신 화살표`=>`를 사용하여 보다 간략한 방법으로 함수를 선언
+
+* arrow 함수는 익명 함수로만 사용할 수 있다.
+
+  ```javascript
+  const pow = x => x * x;
+  console.log(pow(10)); // 100
+  ```
+
+* `addEventListener `함수의 콜백 함수를 arrow 함수로 정의하면 `this`가 상위 컨택스트인 전역 객체 **window**를 가리킨다.
+
+  * addEventListener 를 사용하는 경우, function 키워드로 정의한 일반 함수를 사용
+
+
+
+
+
+[기존]
 
 ```javascript
 const greeting = function(){
@@ -207,28 +227,28 @@ you.greeting()
 => {name: "yoon", greeting: ƒ}
 ```
 
-* arrow func
+[arrow func]
 
-  ```javascript
-  const arrow = () => console.log(this)
-  
-  arrow()
-  => Window {parent: Window, opener: null, top: Window, length: 0, frames: Window, …}
-  ```
+```javascript
+const arrow = () => console.log(this)
 
-  ```javascript
-  const me = {
-      name:'kim',
-      arrow
-  }
-  
-  me.arrow()
-  => Window {parent: Window, opener: null, top: Window, length: 0, frames: Window, …}
-  ```
+arrow()
+=> Window {parent: Window, opener: null, top: Window, length: 0, frames: Window, …}
+```
 
-  
+```javascript
+const me = {
+    name:'kim',
+    arrow
+}
 
-* 
+me.arrow()
+=> Window {parent: Window, opener: null, top: Window, length: 0, frames: Window, …}
+```
+
+
+
+
 
 * 데이터 추출
 
@@ -263,7 +283,7 @@ you.greeting()
 
 <img src="images/image-20200629144413612.png" alt="image-20200629144413612" style="zoom:50%;" />
 
-## axios
+## 6. axios
 
 *  [git hub](https://github.com/axios/axios#promises) 
 
@@ -336,3 +356,84 @@ you.greeting()
 [결과]
 
 ![image-20200629144201053](images/image-20200629144201053.png)
+
+### axios - 좋아요 구현
+
+![image-20200629152528169](images/image-20200629152528169.png)
+
+```html
+<!-- _like.html -->
+{% if user in article.like_users.all %}
+<i class="fas fa-heart fa-lg like-button" data-id="{{ article.id }}" style="color: crimson;"></i>
+{% else %}
+<i class="far fa-heart fa-lg like-button" data-id="{{ article.id }}" style="color:black;"></i>
+{% endif %}
+<span id="like-count-{{ article.pk }}"> {{ article.like_users.count }}</span> 
+```
+
+* `data-id="{{ article.id }}"` : event.target.dataset.id
+* like.js
+
+```javascript
+const likeButton = document.querySelectorAll('.like-button')
+likeButton.forEach(button => { //반복문으로 게시글 갯수따라서 버튼 갯수가 다르기 때문에 
+    //console.log(button)
+    button.addEventListener('click',function(event){
+        //console.log(event)
+        const articleId = event.target.dataset.id
+        const likeCount = document.querySelector(`#like-count-${articleId}`)
+
+        axios.defaults.xsrfCookieName = 'csrftoken';
+        axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+        
+        axios.post(`/articles/${articleId}/like/`) //urls
+        .then(response => {
+            //이제 특정한 key, value만으로 값 처리
+            console.log(response)
+            likeCount.innerHTML =response.data.count
+            if(response.data.liked){
+                event.target.className = 'fas fa-heart fa-lg like-button'
+                event.target.style.color = 'crimson'
+            }else{
+                event.target.className = 'far fa-heart fa-lg like-button'
+                event.target.style.color='black'
+            }
+        })
+    })
+})
+```
+
+* axios의 csrf 방식 : [post](https://docs.djangoproject.com/en/3.0/ref/csrf/)
+
+```javascript
+        axios.defaults.xsrfCookieName = 'csrftoken';
+        axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+```
+
+* html에 `<script src="{% static 'articles/js/like.js' %}"></script>`를 삽입하여 js 넣어주기.
+
+* views.py
+
+  ```python
+  @login_required
+  def like(request, article_pk):
+      # 특정 게시물에 대한 정보
+      article = get_object_or_404(Article, pk=article_pk)
+      # 좋아요를 누른 유저에 대한 정보
+      user = request.user
+      # 사용자가 게시글의 좋아요 목록에 있으면,
+      if user in article.like_users.all(): #user가 sequence안에 있는지 확인 - 있으면 좋아요 취소
+          article.like_users.remove(user)
+          liked = False
+      else:
+          article.like_users.add(user)
+          liked = True
+      context = {
+          'liked':liked,
+          'count': article.like_users.count()
+      }
+      return JsonResponse(context)
+  
+  ```
+
+  
