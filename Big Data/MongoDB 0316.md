@@ -50,10 +50,11 @@ node.js -> 라즈베리 파이 연동이 용이하다.
   * 다른 dos 창에서 mongo 실행
 
     * ```sql
-    C:\Users\student>mongo
+    C:\Users\student>mong
       ```
 
-    ![image-20200316102134791](images/image-20200316102134791.png)
+
+  ![image-20200316102134791](images/image-20200316102134791.png)
 
   * `mongodb shell`에서 실행 됐는 지 확인
 
