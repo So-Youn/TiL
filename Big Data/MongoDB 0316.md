@@ -50,7 +50,7 @@ node.js -> 라즈베리 파이 연동이 용이하다.
   * 다른 dos 창에서 mongo 실행
 
     * ```sql
-    C:\Users\student>mong
+    C:\Users\student>mongo
       ```
 
 
@@ -84,7 +84,7 @@ node.js -> 라즈베리 파이 연동이 용이하다.
 
    * 현재 아무것도 저장되어있지 않음을 알 수 있다.
 
-    * 접속에서 나가기
+        * 접속에서 나가기
 
       ```sql
       MongoDB Enterprise > db.logout()
